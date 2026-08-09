@@ -28,7 +28,7 @@ export default defineConfig({
     // Enlaces a redes sociales en la barra superior
     socialLinks: [
       { icon: 'discord', link: 'https://discord.gg/Xex24yPpWn' },
-      { icon: 'github', link: 'https://github.com/naxitosstudios' }
+      { icon: 'github', link: 'https://github.com/naxito-studio' }
     ],
 
     // Menús laterales (Sidebar) para cada plugin
