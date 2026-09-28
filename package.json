@@ -1,0 +1,14 @@
+{
+  "name": "nxplugins-docs",
+  "version": "1.0.0",
+  "description": "Documentación oficial de plugins de Naxito's Studios",
+  "main": "index.js",
+  "scripts": {
+    "docs:dev": "vitepress dev",
+    "docs:build": "vitepress build",
+    "docs:preview": "vitepress preview"
+  },
+  "devDependencies": {
+    "vitepress": "^1.0.0"
+  }
+}

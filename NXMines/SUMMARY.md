@@ -1,0 +1,15 @@
+# Table of contents — NXMines
+
+- [Home](README.md)
+- [Installation](instalacion.md)
+- [Commands](comandos.md)
+- [Permissions](permisos.md)
+- [GUI Usage](gui.md)
+- [Drop System](drops.md)
+- [PlaceholderAPI](placeholders.md)
+- [Configuration — config.yml](configuracion/config-yml.md)
+- [Configuration — menus.yml](configuracion/menus-yml.md)
+- [Configuration — particles.yml](configuracion/particles-yml.md)
+- [Configuration — sounds.yml](configuracion/sounds-yml.md)
+- [Importing Mines (Convert)](convert.md)
+- [FAQ](faq.md)
