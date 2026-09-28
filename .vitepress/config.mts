@@ -9,7 +9,7 @@ export default defineConfig({
 
   themeConfig: {
     // Top bar logo (place your logo at .vitepress/public/logo.png)
-    logo: '/logo.png',
+    logo: '/nxplugins-docs/logo.png',
     siteTitle: 'NXPlugins',
 
     // Built-in search
