@@ -1,44 +1,44 @@
-# Permisos
+# Permissions
 
-Todos los permisos de NXGuard tienen `op` como valor por defecto, lo que significa que solo los operadores los tienen sin configuración adicional. Puedes asignarlos a rangos con cualquier plugin de permisos (LuckPerms, PermissionsEx, etc.).
+All NXGuard permissions default to `op`, meaning only operators have them without additional configuration. You can assign them to ranks with any permissions plugin (LuckPerms, PermissionsEx, etc.).
 
 ---
 
-## Tabla de permisos
+## Permissions table
 
-| Permiso | Descripción | Default |
+| Permission | Description | Default |
 |---|---|---|
-| `nxguard.use` | Permite usar `/guard` y ver la ayuda. Sin este permiso el jugador no puede ejecutar ningún subcomando. | `op` |
-| `nxguard.gui` | Permite abrir el menú GUI de regiones con `/guard gui`. | `op` |
-| `nxguard.info` | Permite consultar información de una región con `/guard info <región>`. | `op` |
-| `nxguard.reload` | Permite recargar la configuración con `/guard reload`. | `op` |
+| `nxguard.use` | Allows using `/guard` and viewing the help. Without this permission the player cannot run any subcommand. | `op` |
+| `nxguard.gui` | Allows opening the regions GUI menu with `/guard gui`. | `op` |
+| `nxguard.info` | Allows viewing region information with `/guard info <region>`. | `op` |
+| `nxguard.reload` | Allows reloading the configuration with `/guard reload`. | `op` |
 
 ---
 
-## Jerarquía recomendada
+## Recommended hierarchy
 
 ```
-nxguard.use          ← base, necesaria para todo
-├── nxguard.gui      ← para poder abrir el GUI
-├── nxguard.info     ← para ver info por chat
-└── nxguard.reload   ← solo para administradores
+nxguard.use          ← base, required for everything
+├── nxguard.gui      ← to be able to open the GUI
+├── nxguard.info     ← to see info in chat
+└── nxguard.reload   ← administrators only
 ```
 
-> `nxguard.use` es el permiso padre. Sin él, los demás permisos no sirven porque el comando es rechazado antes de evaluar el subcomando.
+> `nxguard.use` is the parent permission. Without it, the other permissions are useless because the command is rejected before the subcommand is evaluated.
 
 ---
 
-## Ejemplo con LuckPerms
+## LuckPerms example
 
-Dar acceso al GUI a un rango `moderador`:
+Give GUI access to a `moderator` rank:
 
 ```bash
-/lp group moderador permission set nxguard.use true
-/lp group moderador permission set nxguard.gui true
-/lp group moderador permission set nxguard.info true
+/lp group moderator permission set nxguard.use true
+/lp group moderator permission set nxguard.gui true
+/lp group moderator permission set nxguard.info true
 ```
 
-Dar acceso completo incluyendo reload a un rango `admin`:
+Give full access, including reload, to an `admin` rank:
 
 ```bash
 /lp group admin permission set nxguard.use true
@@ -49,10 +49,10 @@ Dar acceso completo incluyendo reload a un rango `admin`:
 
 ---
 
-## Mensajes de permiso denegado
+## Permission denied message
 
-Cuando un jugador no tiene el permiso necesario, recibe el mensaje configurado en `messages.no-permission` del `config.yml`. Por defecto:
+When a player lacks the required permission, they receive the message configured in `messages.no-permission` of `config.yml`. By default:
 
 ```
-[NXGuard] No tienes permiso para hacer eso.
+[NXGuard] You don't have permission to do that.
 ```

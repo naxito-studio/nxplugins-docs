@@ -1,94 +1,94 @@
-# Sistema de drops
+# Drop System
 
-NXMines permite definir qué obtienen los jugadores al romper bloques dentro de una mina. Cada mina tiene una **tabla de drops por bloque**: puedes configurar drops distintos para el diamante, el hierro, la piedra, etc.
-
----
-
-## ¿Cómo funciona?
-
-Cuando un jugador rompe un bloque dentro de una mina:
-
-1. NXMines identifica qué tipo de bloque fue roto.
-2. Consulta la tabla de drops de ese bloque para la mina.
-3. Evalúa cada entrada de drop según su **probabilidad** (0–100%).
-4. Entrega los drops que superen la tirada de azar.
-
-El modo de entrega está definido en `config.yml` (`drops.mode`): `INVENTORY` (directo al inventario) o `GROUND` (cae al suelo). Si hay un plugin de auto-pickup activo, siempre se usa `INVENTORY`.
+NXMines lets you define what players get when breaking blocks inside a mine. Each mine has a **per-block drop table**: you can configure different drops for diamond, iron, stone, etc.
 
 ---
 
-## Qué puede hacer cada entrada de drop
+## How does it work?
 
-Una entrada de drop (`DropEntry`) puede configurar lo siguiente:
+When a player breaks a block inside a mine:
 
-| Campo | Descripción |
+1. NXMines identifies which type of block was broken.
+2. It looks up that block's drop table for the mine.
+3. It evaluates each drop entry according to its **probability** (0–100%).
+4. It delivers the drops that pass the random roll.
+
+The delivery mode is defined in `config.yml` (`drops.mode`): `INVENTORY` (straight to the inventory) or `GROUND` (drops on the ground). If an auto-pickup plugin is active, `INVENTORY` is always used.
+
+---
+
+## What each drop entry can do
+
+A drop entry (`DropEntry`) can configure the following:
+
+| Field | Description |
 |---|---|
-| **Material** | El ítem que se entrega (ej: `DIAMOND`, `IRON_INGOT`). |
-| **Cantidad** | Rango mínimo–máximo de unidades (ej: 1–3). |
-| **Probabilidad** | Porcentaje de 0 a 100 de que se entregue este drop. |
-| **Nombre personalizado** | Nombre del ítem (acepta MiniMessage / color). |
-| **Lore personalizado** | Descripción del ítem (acepta MiniMessage / color). |
-| **Encantamientos** | Encantamientos con su nivel. |
-| **Experiencia** | Puntos de XP que se otorgan al jugador. |
-| **Comandos** | Comandos ejecutados al entregar el drop. |
-| **Mensajes** | Mensajes enviados al jugador al obtener el drop. |
+| **Material** | The item that is delivered (e.g. `DIAMOND`, `IRON_INGOT`). |
+| **Amount** | Minimum–maximum range of units (e.g. 1–3). |
+| **Probability** | Percentage from 0 to 100 that this drop is delivered. |
+| **Custom name** | Item name (accepts MiniMessage / color). |
+| **Custom lore** | Item description (accepts MiniMessage / color). |
+| **Enchantments** | Enchantments with their level. |
+| **Experience** | XP points granted to the player. |
+| **Commands** | Commands executed when the drop is delivered. |
+| **Messages** | Messages sent to the player when they get the drop. |
 
 ---
 
-## Comandos en drops
+## Commands in drops
 
-El campo `commands` de cada drop admite dos prefijos:
+The `commands` field of each drop supports two prefixes:
 
-| Prefijo | Ejecutor |
+| Prefix | Executor |
 |---|---|
-| `{console:<cmd>}` | El comando lo ejecuta la consola del servidor. |
-| `{player:<cmd>}` | El comando lo ejecuta el jugador. |
+| `{console:<cmd>}` | The command is executed by the server console. |
+| `{player:<cmd>}` | The command is executed by the player. |
 
-**Ejemplos:**
+**Examples:**
 ```
 {console:give %player% diamond 1}
-{player:say ¡Encontré un diamante!}
+{player:say I found a diamond!}
 ```
 
-El placeholder `%player%` se reemplaza por el nombre del jugador que rompió el bloque.
+The `%player%` placeholder is replaced with the name of the player who broke the block.
 
 ---
 
-## Editor de drops (GUI)
+## Drops editor (GUI)
 
-Accede desde el botón **Custom Drops** del editor de mina.
+Access it from the **Custom Drops** button in the mine editor.
 
-### Layout del menú de drops (4 filas)
+### Drops menu layout (4 rows)
 
 ```
 ┌─────────────────────────────────────────────┐
-│  D  D  D  D  D  D  D  D  D   ← filas 1-2   │
-│  (entradas de drop)                          │
-│  .  .  .  .  .  .  .  .  .   ← fila 3      │
-│  +  .  .  ✔  .  .  .  ↩  .   ← fila 4 nav │
+│  D  D  D  D  D  D  D  D  D   ← rows 1-2    │
+│  (drop entries)                              │
+│  .  .  .  .  .  .  .  .  .   ← row 3       │
+│  +  .  .  ✔  .  .  .  ↩  .   ← row 4 nav   │
 └─────────────────────────────────────────────┘
 
-+  = Añadir nuevo drop (slot 27)  — EMERALD
-✔  = Guardar tabla (slot 31)      — NETHER_STAR
-↩  = Volver al editor (slot 35)   — ARROW
++  = Add new drop (slot 27)   — EMERALD
+✔  = Save table (slot 31)     — NETHER_STAR
+↩  = Back to editor (slot 35) — ARROW
 ```
 
-### Interacción
+### Interaction
 
-| Acción | Resultado |
+| Action | Result |
 |---|---|
-| Click en `+ Add Drop Rule` | Crea una nueva entrada de drop vacía. |
-| Click en una entrada existente | Abre el editor de detalle de ese drop. |
-| Click en `✔ Save Drop Table` | Guarda todos los cambios en la base de datos. |
-| Click en `‹ Back to Editor` | Vuelve al editor de mina sin guardar. |
+| Click on `+ Add Drop Rule` | Creates a new empty drop entry. |
+| Click on an existing entry | Opens that drop's detail editor. |
+| Click on `✔ Save Drop Table` | Saves all changes to the database. |
+| Click on `‹ Back to Editor` | Returns to the mine editor without saving. |
 
 ---
 
-## Persistencia
+## Persistence
 
-Cada vez que se guarda una tabla de drops desde el GUI:
+Every time a drop table is saved from the GUI:
 
-1. Todas las entradas se escriben en la base de datos (SQLite o MySQL).
-2. Los cambios se aplican inmediatamente para los nuevos bloques rotos.
+1. All entries are written to the database (SQLite or MySQL).
+2. Changes apply immediately to newly broken blocks.
 
-> Los bloques que ya cayeron antes de guardar no se ven afectados retroactivamente.
+> Blocks that already dropped before saving are not affected retroactively.

@@ -1,49 +1,49 @@
-# Permisos
+# Permissions
 
-Todos los permisos de NXMines tienen `op` como valor por defecto, lo que significa que solo los operadores los tienen sin configuración adicional. Puedes asignarlos a rangos con cualquier plugin de permisos (LuckPerms, PermissionsEx, etc.).
+All NXMines permissions default to `op`, meaning only operators have them without additional configuration. You can assign them to ranks with any permissions plugin (LuckPerms, PermissionsEx, etc.).
 
 ---
 
-## Tabla de permisos
+## Permissions table
 
-| Permiso | Descripción | Default |
+| Permission | Description | Default |
 |---|---|---|
-| `nxmines.admin` | Acceso completo a todas las funciones de NXMines. | `op` |
-| `nxmines.gui` | Permite abrir el menú GUI principal con `/mine gui`. | `op` |
-| `nxmines.create` | Permite crear minas con `/mine create`. | `op` |
-| `nxmines.reset` | Permite forzar el reinicio de minas con `/mine reset`. | `op` |
-| `nxmines.redefine` | Permite redefinir la región de una mina con `/mine redefine`. | `op` |
-| `nxmines.reload` | Permite recargar la configuración con `/mine reload`. | `op` |
-| `nxmines.convert` | Permite importar minas desde otros plugins con `/mine convert`. | `op` |
-| `nxmines.version` | Permite ver la información de versión con `/mine version`. | `op` |
+| `nxmines.admin` | Full access to all NXMines features. | `op` |
+| `nxmines.gui` | Allows opening the main GUI menu with `/mine gui`. | `op` |
+| `nxmines.create` | Allows creating mines with `/mine create`. | `op` |
+| `nxmines.reset` | Allows forcing mine resets with `/mine reset`. | `op` |
+| `nxmines.redefine` | Allows redefining a mine's region with `/mine redefine`. | `op` |
+| `nxmines.reload` | Allows reloading the configuration with `/mine reload`. | `op` |
+| `nxmines.convert` | Allows importing mines from other plugins with `/mine convert`. | `op` |
+| `nxmines.version` | Allows viewing version information with `/mine version`. | `op` |
 
 ---
 
-## Jerarquía recomendada
+## Recommended hierarchy
 
 ```
-nxmines.admin          ← acceso total
-├── nxmines.gui        ← ver la lista y el editor de minas
-├── nxmines.create     ← crear minas
-├── nxmines.reset      ← forzar reinicios
-├── nxmines.redefine   ← redefinir regiones
-├── nxmines.reload     ← recargar configuración (solo admins)
-├── nxmines.convert    ← importar minas (solo admins)
-└── nxmines.version    ← ver info de versión
+nxmines.admin          ← full access
+├── nxmines.gui        ← view the mine list and editor
+├── nxmines.create     ← create mines
+├── nxmines.reset      ← force resets
+├── nxmines.redefine   ← redefine regions
+├── nxmines.reload     ← reload configuration (admins only)
+├── nxmines.convert    ← import mines (admins only)
+└── nxmines.version    ← view version info
 ```
 
 ---
 
-## Ejemplo con LuckPerms
+## LuckPerms example
 
-Dar acceso al GUI a un rango `moderador`:
+Give GUI access to a `moderator` rank:
 
 ```bash
-/lp group moderador permission set nxmines.gui true
-/lp group moderador permission set nxmines.reset true
+/lp group moderator permission set nxmines.gui true
+/lp group moderator permission set nxmines.reset true
 ```
 
-Dar acceso completo a un rango `admin`:
+Give full access to an `admin` rank:
 
 ```bash
 /lp group admin permission set nxmines.admin true
@@ -51,10 +51,10 @@ Dar acceso completo a un rango `admin`:
 
 ---
 
-## Mensaje de permiso denegado
+## Permission denied message
 
-Cuando un jugador no tiene el permiso necesario, recibe el mensaje configurado en `general.no-permission` del archivo de mensajes (`messages-es.yml` o `messages-en.yml`). Por defecto:
+When a player lacks the required permission, they receive the message configured in `general.no-permission` of the messages file (`messages-es.yml` or `messages-en.yml`). By default:
 
 ```
-[NXMines] No tienes permiso para hacer eso.
+[NXMines] You don't have permission to do that.
 ```

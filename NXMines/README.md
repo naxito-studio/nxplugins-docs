@@ -2,59 +2,59 @@
 
 ![NXMines Logo](../.vitepress/public/nxmines.png)
 
-**NXMines** es un plugin avanzado, modular y altamente configurable de minas para servidores Minecraft Paper 1.20+. Permite crear, gestionar y personalizar minas de minería con reinicio automático, composición de bloques personalizable, tablas de drops por bloque, interfaz gráfica completa y soporte para PlaceholderAPI y Vault.
+**NXMines** is an advanced, modular and highly configurable mines plugin for Minecraft Paper 1.20+ servers. It lets you create, manage and customize mining areas with automatic reset, customizable block composition, per-block drop tables, a full graphical interface and support for PlaceholderAPI and Vault.
 
 ---
 
-## ¿Para qué sirve?
+## What is it for?
 
-Si quieres tener zonas de minería en tu servidor que se regeneren automáticamente después de un tiempo (o cuando se vacían), NXMines te da todo lo necesario: crea minas usando tu selección de WorldEdit o FAWE, configura qué bloques aparecen (con sus porcentajes), define qué drops obtienen los jugadores al romper cada bloque, y gestiona todo desde un menú de inventario visual.
-
----
-
-## ¿Qué puedes hacer con NXMines?
-
-- Crear minas a partir de tu selección de WorldEdit / FAWE con un solo comando.
-- Ver y gestionar todas tus minas desde un menú GUI paginado.
-- Configurar la **composición de bloques** de cada mina con porcentajes precisos.
-- Definir **tablas de drops personalizadas** por bloque: ítems, XP, comandos y mensajes.
-- Ajustar el **intervalo de reinicio** de cada mina individualmente.
-- Forzar reinicios manuales desde el GUI o por comando.
-- **Redefinir la región** de una mina existente sin perder su configuración.
-- **Duplicar** minas para reutilizar composición y drops.
-- **Exportar** la configuración de una mina a un archivo YAML externo.
-- **Importar minas** desde CataMines y AxMines con el comando `/mine convert`.
-- Ver placeholders dinámicos en tiempo real con **PlaceholderAPI**.
-- Elegir entre base de datos **SQLite** (por defecto) o **MySQL / MariaDB**.
-- Personalizar partículas y sonidos para eventos de reinicio y creación.
-- Soporte multiidioma: incluye mensajes en **español** e **inglés**.
+If you want mining zones on your server that regenerate automatically after some time (or when they run out), NXMines gives you everything you need: create mines using your WorldEdit or FAWE selection, configure which blocks appear (with their percentages), define which drops players get when breaking each block, and manage everything from a visual inventory menu.
 
 ---
 
-## Requisitos
+## What can you do with NXMines?
 
-| Requisito | Notas |
+- Create mines from your WorldEdit / FAWE selection with a single command.
+- View and manage all your mines from a paginated GUI menu.
+- Configure the **block composition** of each mine with precise percentages.
+- Define **custom drop tables** per block: items, XP, commands and messages.
+- Adjust the **reset interval** of each mine individually.
+- Force manual resets from the GUI or by command.
+- **Redefine the region** of an existing mine without losing its configuration.
+- **Duplicate** mines to reuse composition and drops.
+- **Export** a mine's configuration to an external YAML file.
+- **Import mines** from CataMines and AxMines with the `/mine convert` command.
+- See dynamic placeholders in real time with **PlaceholderAPI**.
+- Choose between **SQLite** (default) or **MySQL / MariaDB** databases.
+- Customize particles and sounds for reset and creation events.
+- Multi-language support: includes messages in **Spanish** and **English**.
+
+---
+
+## Requirements
+
+| Requirement | Notes |
 |---|---|
-| Minecraft Paper | Versión 1.20 o superior |
-| Java | 17 o superior |
-| WorldEdit **o** FastAsyncWorldEdit | Necesario para crear y redefinir minas |
-| PlaceholderAPI | Opcional — habilita placeholders `%nxmines_*%` |
-| Vault | Opcional — integración de economía |
-| CataMines / AxMines | Opcional — solo necesario para importar minas |
+| Minecraft Paper | Version 1.20 or higher |
+| Java | 17 or higher |
+| WorldEdit **or** FastAsyncWorldEdit | Required to create and redefine mines |
+| PlaceholderAPI | Optional — enables `%nxmines_*%` placeholders |
+| Vault | Optional — economy integration |
+| CataMines / AxMines | Optional — only needed to import mines |
 
 ---
 
-## Contenido de esta guía
+## Guide contents
 
-- [Instalación](instalacion.md)
-- [Comandos](comandos.md)
-- [Permisos](permisos.md)
-- [Uso del GUI](gui.md)
-- [Sistema de drops](drops.md)
+- [Installation](instalacion.md)
+- [Commands](comandos.md)
+- [Permissions](permisos.md)
+- [GUI Usage](gui.md)
+- [Drop System](drops.md)
 - [PlaceholderAPI](placeholders.md)
-- [Configuración — config.yml](configuracion/config-yml.md)
-- [Configuración — menus.yml](configuracion/menus-yml.md)
-- [Configuración — particles.yml](configuracion/particles-yml.md)
-- [Configuración — sounds.yml](configuracion/sounds-yml.md)
-- [Importar minas (Convert)](convert.md)
-- [Preguntas frecuentes](faq.md)
+- [Configuration — config.yml](configuracion/config-yml.md)
+- [Configuration — menus.yml](configuracion/menus-yml.md)
+- [Configuration — particles.yml](configuracion/particles-yml.md)
+- [Configuration — sounds.yml](configuracion/sounds-yml.md)
+- [Importing Mines (Convert)](convert.md)
+- [FAQ](faq.md)

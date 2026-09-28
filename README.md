@@ -1,50 +1,64 @@
-# Naxito's Studios — Documentación Oficial
+# Naxito's Studios — Official Documentation
 
 ![Naxito's Studios Logo](.vitepress/public/logo.png)
 
-Bienvenido a la documentación oficial de **Naxito's Studios**. Aquí encontrarás guías detalladas, tutoriales de instalación, listas de comandos, permisos y ejemplos de configuración para todos nuestros plugins de Minecraft (Paper 1.20+).
+Welcome to the official documentation of **Naxito's Studios**. Here you'll find detailed guides, installation tutorials, command lists, permissions and configuration examples for all our Minecraft plugins (Paper 1.20+).
 
 ---
 
-## Plugins Disponibles
+## Available Plugins
 
 <details>
-<summary><b>NXGuard — Editor Visual de WorldGuard</b></summary>
+<summary><b>NXGuard — Visual WorldGuard Editor</b></summary>
 
 <br>
 
 ![NXGuard Logo](.vitepress/public/nxguard.png)
 
-**NXGuard** te permite gestionar todas las flags de tus regiones de WorldGuard a través de un menú GUI totalmente visual, sin necesidad de recordar ni escribir comandos complejos.
+**NXGuard** lets you manage all your WorldGuard region flags through a fully visual GUI menu, without needing to remember or type complex commands.
 
-- **Características:** Menú GUI paginado, soporte para WorldGuard Extra Flags, edición en tiempo real con 1-click.
-- [Ver documentación completa de NXGuard](NXGuard/README.md)
+- **Features:** Paginated GUI menu, WorldGuard Extra Flags support, real-time 1-click editing.
+- [View full NXGuard documentation](NXGuard/README.md)
 
 </details>
 
 <details>
-<summary><b>NXMines — Sistema Avanzado de Minas</b></summary>
+<summary><b>NXMines — Advanced Mines System</b></summary>
 
 <br>
 
 ![NXMines Logo](.vitepress/public/nxmines.png)
 
-**NXMines** es una solución completa y optimizada para la creación y gestión de minas con reinicios automáticos, composición de bloques por porcentajes y tablas de drops personalizadas.
+**NXMines** is a complete, optimized solution for creating and managing mines with automatic resets, percentage-based block composition and custom drop tables.
 
-- **Características:** Creador de minas con selección WorldEdit/FAWE, drops por bloque (ítems, XP, comandos), compatibilidad con PAPI y Vault, importador desde CataMines/AxMines.
-- [Ver documentación completa de NXMines](NXMines/README.md)
+- **Features:** Mine creator with WorldEdit/FAWE selection, per-block drops (items, XP, commands), PAPI and Vault compatibility, importer from CataMines/AxMines.
+- [View full NXMines documentation](NXMines/README.md)
+
+</details>
+
+<details>
+<summary><b>NXRooms — Competitive PvP Rooms</b></summary>
+
+<br>
+
+![NXRooms Logo](.vitepress/public/nxrooms.png)
+
+**NXRooms** is a full PvP rooms system for 1v1, 2v2 and 3v3 arenas, with a physical wand-based room creation flow and spectator support.
+
+- **Features:** 3-stage wand creation, automatic team assignment, inventory preservation, per-room flags and potion effects, PlaceholderAPI stats.
+- [View full NXRooms documentation](NXRooms/README.md)
 
 </details>
 
 ---
 
-## Comunidad & Soporte
+## Community & Support
 
-¿Tienes dudas, encontraste un error o necesitas ayuda configurando los plugins? ¡Únete a nuestra comunidad oficial!
+Have questions, found a bug, or need help configuring the plugins? Join our official community!
 
-- **Discord Oficial:** [Unirse al Discord de Naxito's Studios](https://discord.gg/Xex24yPpWn)
+- **Official Discord:** [Join the Naxito's Studios Discord](https://discord.gg/Xex24yPpWn)
 
 ---
 
 > [!TIP]
-> Selecciona el plugin que deseas configurar en el menú lateral izquierdo para acceder a sus tutoriales y referencias de comandos.
+> Select the plugin you want to configure from the left-hand sidebar to access its tutorials and command references.

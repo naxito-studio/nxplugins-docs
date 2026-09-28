@@ -1,114 +1,114 @@
-# Preguntas frecuentes
+# Frequently Asked Questions
 
 ---
 
-## Instalación y compatibilidad
+## Installation and compatibility
 
-**¿NXGuard funciona con Spigot o solo con Paper?**
+**Does NXGuard work with Spigot or only with Paper?**
 
-Funciona con ambos. Está compilado contra la API de Bukkit 1.20, por lo que es compatible con cualquier servidor que la implemente: Spigot, Paper, Purpur, etc.
-
----
-
-**El servidor dice "WorldGuard no está instalado" pero WorldGuard sí está en plugins/.**
-
-Asegúrate de que WorldGuard cargó correctamente antes de NXGuard. Revisa la consola para ver si WorldGuard lanzó errores durante su carga. Si WorldGuard depende de WorldEdit, verifica que WorldEdit también esté presente y sin errores.
+It works with both. It is compiled against the Bukkit 1.20 API, so it is compatible with any server that implements it: Spigot, Paper, Purpur, etc.
 
 ---
 
-**¿Es compatible con versiones anteriores a 1.20?**
+**The server says "WorldGuard is not installed" but WorldGuard is in plugins/.**
 
-No está garantizado. El `api-version` del plugin está fijado en `1.20`. En versiones anteriores algunos materiales pueden no existir y el comportamiento no está definido.
+Make sure WorldGuard loaded correctly before NXGuard. Check the console for errors thrown by WorldGuard during its load. If WorldGuard depends on WorldEdit, verify that WorldEdit is also present and error-free.
+
+---
+
+**Is it compatible with versions older than 1.20?**
+
+It is not guaranteed. The plugin's `api-version` is fixed at `1.20`. In older versions some materials may not exist and the behavior is undefined.
 
 ---
 
 ## GUI
 
-**El GUI se abre pero está vacío.**
+**The GUI opens but it is empty.**
 
-Significa que el mundo en el que está el jugador no tiene regiones registradas en WorldGuard. Crea al menos una región con WorldEdit + WorldGuard antes de usar el GUI.
-
----
-
-**Hago click en una flag pero no pasa nada.**
-
-Puede tener dos causas:
-1. La flag es de tipo `StringFlag`, `IntegerFlag` u otro tipo no booleano — no es editable desde el GUI. El lore mostrará "No editable desde el GUI".
-2. Hubo un error al guardar. Revisa la consola del servidor para ver si hay una advertencia de NXGuard sobre `saveChanges()`.
+It means the world the player is in has no regions registered in WorldGuard. Create at least one region with WorldEdit + WorldGuard before using the GUI.
 
 ---
 
-**Los cambios en las flags no se guardan entre reinicios del servidor.**
+**I click a flag but nothing happens.**
 
-Si `saveChanges()` falla silenciosamente, los cambios se aplican en memoria pero no en disco. Revisa los permisos de escritura de la carpeta `world/region/` (o el nombre de tu mundo). WorldGuard necesita poder escribir ahí.
-
----
-
-**¿Puedo abrir el GUI de un mundo diferente al que estoy?**
-
-No. El GUI siempre muestra las regiones del mundo donde está parado el jugador en ese momento. Para ver regiones de otro mundo debes teletransportarte a ese mundo primero.
+There are two possible causes:
+1. The flag is a `StringFlag`, `IntegerFlag` or another non-boolean type — it is not editable from the GUI. The lore will show "Not editable from the GUI".
+2. There was an error while saving. Check the server console for an NXGuard warning about `saveChanges()`.
 
 ---
 
-**La flecha de "Página siguiente" no aparece en el editor de flags.**
+**Flag changes are not kept between server restarts.**
 
-Significa que todas las flags registradas caben en una sola página (menos de 45). Esto es normal en servidores sin plugins extra de flags.
+If `saveChanges()` fails silently, changes are applied in memory but not on disk. Check the write permissions of the `world/region/` folder (or your world's name). WorldGuard needs to be able to write there.
+
+---
+
+**Can I open the GUI of a different world than the one I'm in?**
+
+No. The GUI always shows the regions of the world the player is currently standing in. To see regions of another world you must teleport to that world first.
+
+---
+
+**The "Next page" arrow does not appear in the flag editor.**
+
+It means all the registered flags fit on a single page (fewer than 45). This is normal on servers without extra flag plugins.
 
 ---
 
 ## Flags
 
-**Una flag aparece en gris pero WorldGuard la aplica como si estuviera activa. ¿Por qué?**
+**A flag shows as gray but WorldGuard applies it as if it were enabled. Why?**
 
-El estado gris significa que la región no tiene un valor asignado para esa flag, pero WorldGuard puede heredar el valor de una región padre o aplicar su propio default global. NXGuard solo muestra el valor asignado directamente en la región, no el valor efectivo heredado.
+The gray state means the region has no value assigned for that flag, but WorldGuard may inherit the value from a parent region or apply its own global default. NXGuard only shows the value assigned directly on the region, not the effective inherited value.
 
 ---
 
-**¿Cómo edito flags de tipo texto (greeting, farewell) o numéricas?**
+**How do I edit text flags (greeting, farewell) or numeric ones?**
 
-Desde el GUI no es posible editarlas porque su valor no es booleano. Usa el comando de WorldGuard directamente:
+It is not possible from the GUI because their value is not boolean. Use the WorldGuard command directly:
 
 ```
-/rg flag <región> greeting Bienvenido a {name}
-/rg flag <región> heal-amount 2
+/rg flag <region> greeting Welcome to {name}
+/rg flag <region> heal-amount 2
 ```
 
 ---
 
-**¿Puedo editar flags de la región `__global__`?**
+**Can I edit flags of the `__global__` region?**
 
-Sí. `__global__` aparece en la lista del GUI como cualquier otra región. Sus flags afectan a todo el mundo, así que edítalas con cuidado.
-
----
-
-## Configuración
-
-**Cambié el config.yml pero los GUIs siguen iguales.**
-
-Ejecuta `/guard reload` para aplicar los cambios. Los GUIs que ya estén abiertos deben cerrarse y reabrirse para mostrar los nuevos valores.
+Yes. `__global__` appears in the GUI list like any other region. Its flags affect the whole world, so edit them carefully.
 
 ---
 
-**¿Puedo cambiar los materiales de los ítems de flags?**
+## Configuration
 
-Sí. En `config.yml` cambia los valores de `gui.flag-active.material`, `gui.flag-deny.material` y `gui.flag-inactive.material` por cualquier material válido de Bukkit, por ejemplo `GREEN_STAINED_GLASS_PANE`, `RED_STAINED_GLASS_PANE`, etc.
+**I changed config.yml but the GUIs are still the same.**
+
+Run `/guard reload` to apply the changes. GUIs that are already open must be closed and reopened to show the new values.
 
 ---
 
-**¿Puedo cambiar cuántas regiones aparecen por página?**
+**Can I change the materials of the flag items?**
 
-Sí. Modifica `settings.regions-per-page` en `config.yml`. El valor máximo recomendado es `45` para que la fila de navegación quede en la última fila del inventario. Si pones un valor mayor, los ítems de región podrían solaparse con los botones de navegación.
+Yes. In `config.yml` change the values of `gui.flag-active.material`, `gui.flag-deny.material` and `gui.flag-inactive.material` to any valid Bukkit material, for example `GREEN_STAINED_GLASS_PANE`, `RED_STAINED_GLASS_PANE`, etc.
+
+---
+
+**Can I change how many regions appear per page?**
+
+Yes. Modify `settings.regions-per-page` in `config.yml`. The maximum recommended value is `45` so the navigation row stays on the last row of the inventory. If you set a higher value, region items could overlap the navigation buttons.
 
 ---
 
 ## WorldGuard Extra Flags
 
-**Tengo WorldGuard Extra Flags instalado pero sus flags no aparecen.**
+**I have WorldGuard Extra Flags installed but its flags don't show up.**
 
-Asegúrate de que WorldGuard Extra Flags cargó antes que NXGuard. Si el orden de carga es correcto, la consola debería mostrar:
+Make sure WorldGuard Extra Flags loaded before NXGuard. If the load order is correct, the console should show:
 
 ```
-[NXGuard] WorldGuard Extra Flags detectado — flags adicionales disponibles.
+[NXGuard] WorldGuard Extra Flags detected — additional flags available.
 ```
 
-Si muestra la línea de "no instalado" aunque el plugin esté presente, puede ser un problema de compatibilidad de versiones entre WorldGuard Extra Flags y tu versión de WorldGuard.
+If it shows the "not installed" line even though the plugin is present, it may be a version compatibility problem between WorldGuard Extra Flags and your WorldGuard version.

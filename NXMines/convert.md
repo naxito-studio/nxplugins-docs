@@ -1,75 +1,75 @@
-# Importar minas desde otros plugins
+# Importing Mines from Other Plugins
 
-NXMines puede importar minas de otros plugins populares de minas. El comando es `/mine convert`.
+NXMines can import mines from other popular mines plugins. The command is `/mine convert`.
 
 ---
 
-## Plugins soportados
+## Supported plugins
 
-| Argumento | Plugin origen |
+| Argument | Source plugin |
 |---|---|
 | `catamines` | CataMines |
 | `axmines` | AxMines |
 
 ---
 
-## Uso
+## Usage
 
 ```bash
-/mine convert <plugin> [mina|all] [--dry-run]
+/mine convert <plugin> [mine|all] [--dry-run]
 ```
 
-| Argumento | Descripción |
+| Argument | Description |
 |---|---|
-| `<plugin>` | Nombre del plugin origen (`catamines` o `axmines`). |
-| `[mina\|all]` | Nombre de una mina específica a importar, o `all` para todas. |
-| `[--dry-run]` | Simulación: muestra cuántas minas se importarían sin hacer cambios. |
+| `<plugin>` | Name of the source plugin (`catamines` or `axmines`). |
+| `[mine\|all]` | Name of a specific mine to import, or `all` for all of them. |
+| `[--dry-run]` | Simulation: shows how many mines would be imported without making changes. |
 
 ---
 
-## Ejemplos
+## Examples
 
 ```bash
-# Importar todas las minas de CataMines
+# Import all mines from CataMines
 /mine convert catamines all
 
-# Importar solo la mina "VIP" de AxMines
+# Import only the "VIP" mine from AxMines
 /mine convert axmines VIP
 
-# Simulación previa sin cambios reales
+# Preview without real changes
 /mine convert axmines all --dry-run
 ```
 
 ---
 
-## ¿Qué se importa?
+## What gets imported?
 
-| Dato | ¿Se importa? |
+| Data | Imported? |
 |---|---|
-| Nombre de la mina | ✅ Sí |
-| Región (coordenadas) | ✅ Sí |
-| Composición de bloques | ✅ Sí |
-| Display name y prefijo | ✅ Sí |
-| Intervalo de reinicio | ✅ Sí |
-| Tablas de drops | ❌ No (deben configurarse manualmente) |
+| Mine name | ✅ Yes |
+| Region (coordinates) | ✅ Yes |
+| Block composition | ✅ Yes |
+| Display name and prefix | ✅ Yes |
+| Reset interval | ✅ Yes |
+| Drop tables | ❌ No (must be configured manually) |
 
 ---
 
-## Comportamiento tras la importación
+## Behavior after importing
 
-- Las minas importadas desde AxMines se **eliminan de la carpeta** `plugins/AxMines/mines/` tras ser importadas correctamente.
-- Si una mina con el mismo nombre ya existe en NXMines, se omite y se registra una advertencia.
-- Si el porcentaje de composición importado no suma 100%, se normaliza automáticamente y se registra una advertencia.
-- Los caracteres no permitidos en el nombre se reemplazan por `_`.
+- Mines imported from AxMines are **removed from the** `plugins/AxMines/mines/` **folder** once they are imported successfully.
+- If a mine with the same name already exists in NXMines, it is skipped and a warning is logged.
+- If the imported composition percentage does not add up to 100%, it is normalized automatically and a warning is logged.
+- Characters not allowed in the name are replaced with `_`.
 
 ---
 
-## Mensajes de resultado
+## Result messages
 
 ```
-[NXMines] Se importaron 5 mina(s) de AxMines correctamente.
-[NXMines] Advertencia de importación: Composition for 'mine_a' normalised from 95.00% to 100%.
-[NXMines] Advertencia de importación: Skipped 'vip': already exists in NXMines.
+[NXMines] Successfully imported 5 mine(s) from AxMines.
+[NXMines] Import warning: Composition for 'mine_a' normalised from 95.00% to 100%.
+[NXMines] Import warning: Skipped 'vip': already exists in NXMines.
 ```
 
 ---
@@ -77,7 +77,7 @@ NXMines puede importar minas de otros plugins populares de minas. El comando es 
 ## Dry-run
 
 ```
-[NXMines] [Modo prueba] Se importarían 5 mina(s) de AxMines. (Sin cambios aplicados)
+[NXMines] [Test mode] 5 mine(s) from AxMines would be imported. (No changes applied)
 ```
 
-El dry-run no crea minas, no elimina archivos ni modifica la base de datos. Es seguro usarlo siempre antes de una importación real.
+Dry-run does not create mines, delete files or modify the database. It is always safe to use before a real import.

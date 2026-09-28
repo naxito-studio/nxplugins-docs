@@ -1,10 +1,10 @@
-# Tabla de contenidos — NXGuard
+# Table of contents — NXGuard
 
-- [Inicio](README.md)
-- [Instalación](instalacion.md)
-- [Comandos](comandos.md)
-- [Permisos](permisos.md)
-- [Configuración](configuracion/config-yml.md)
-- [Uso del GUI](gui.md)
-- [Sistema de flags](flags.md)
-- [Preguntas frecuentes](faq.md)
+- [Home](README.md)
+- [Installation](instalacion.md)
+- [Commands](comandos.md)
+- [Permissions](permisos.md)
+- [Configuration](configuracion/config-yml.md)
+- [GUI Usage](gui.md)
+- [Flag System](flags.md)
+- [FAQ](faq.md)

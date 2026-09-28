@@ -1,78 +1,78 @@
-# Comandos
+# Commands
 
-El comando principal es `/guard`. Tiene tres aliases: `/nxguard` y `/gregion`.
+The main command is `/guard`. It has two aliases: `/nxguard` and `/gregion`.
 
 ---
 
-## Resumen
+## Summary
 
-| Comando | Descripción | Permiso requerido |
+| Command | Description | Required permission |
 |---|---|---|
-| `/guard` | Muestra la ayuda con todos los subcomandos. | `nxguard.use` |
-| `/guard gui` | Abre el menú GUI de regiones. | `nxguard.gui` |
-| `/guard info <región>` | Muestra información de una región por chat. | `nxguard.info` |
-| `/guard reload` | Recarga el archivo `config.yml` sin reiniciar. | `nxguard.reload` |
+| `/guard` | Shows the help with all subcommands. | `nxguard.use` |
+| `/guard gui` | Opens the regions GUI menu. | `nxguard.gui` |
+| `/guard info <region>` | Shows information about a region in chat. | `nxguard.info` |
+| `/guard reload` | Reloads the `config.yml` file without restarting. | `nxguard.reload` |
 
 ---
 
-## Detalle de cada subcomando
+## Details of each subcommand
 
 ### `/guard`
 
-Sin argumentos muestra el menú de ayuda configurado en `messages.help` del `config.yml`.
+With no arguments it shows the help menu configured in `messages.help` of `config.yml`.
 
 ```
-[NXGuard] NXGuard — comandos:
-[NXGuard] /guard gui — menú de regiones
-[NXGuard] /guard info <región> — información de una región
-[NXGuard] /guard reload — recargar configuración
+[NXGuard] NXGuard — commands:
+[NXGuard] /guard gui — regions menu
+[NXGuard] /guard info <region> — information about a region
+[NXGuard] /guard reload — reload configuration
 ```
 
 ---
 
 ### `/guard gui`
 
-**Solo jugadores** (no funciona desde consola).
+**Players only** (does not work from the console).
 
-Abre el inventario GUI con la lista de regiones del mundo donde está parado el jugador. Si el mundo no tiene ninguna región registrada en WorldGuard, muestra el mensaje `messages.no-regions` y no abre el GUI.
+Opens the GUI inventory with the list of regions of the world the player is standing in. If the world has no regions registered in WorldGuard, it shows the `messages.no-regions` message and does not open the GUI.
 
-**Flujo:**
-1. El jugador ejecuta `/guard gui`.
-2. Se abre el menú de lista de regiones (paginado).
-3. Hace click en una región para abrir el editor de flags.
-4. Edita las flags con clicks izquierdo/derecho.
-5. Usa el botón "Volver" para regresar a la lista.
+**Flow:**
+1. The player runs `/guard gui`.
+2. The region list menu (paginated) opens.
+3. They click a region to open its flag editor.
+4. They edit the flags with left/right clicks.
+5. They use the "Back" button to return to the list.
 
 ---
 
-### `/guard info <región>`
+### `/guard info <region>`
 
-**Solo jugadores** (no funciona desde consola).
+**Players only** (does not work from the console).
 
-Muestra por chat información detallada de la región indicada en el mundo actual del jugador. Si la región no existe, muestra el mensaje `messages.region-not-found`.
+Shows detailed information about the given region in the player's current world in chat. If the region does not exist, it shows the `messages.region-not-found` message.
 
-**Ejemplo de salida:**
+**Example output:**
 
 ```
-[NXGuard] Región spawn
-[NXGuard] Mundo: world
-[NXGuard] Prioridad: 10
-[NXGuard] Dueños: (ninguno)
-[NXGuard] Miembros: (ninguno)
-[NXGuard] Flags activas: 3
-[NXGuard] Motor de ediciones: WorldEdit
+[NXGuard] Region spawn
+[NXGuard] World: world
+[NXGuard] Priority: 10
+[NXGuard] Owners: (none)
+[NXGuard] Members: (none)
+[NXGuard] Active flags: 3
+[NXGuard] Edit engine: WorldEdit
 [NXGuard] Flags:
 [NXGuard]   - pvp: deny
 [NXGuard]   - mob-spawning: deny
 [NXGuard]   - fire-spread: deny
 ```
 
-El comando tiene **tab-completion** para el nombre de región — al escribir `/guard info sp` se autocompletará con las regiones del mundo que empiecen por `sp`.
+The command has **tab-completion** for the region name — typing `/guard info sp` autocompletes with the regions of the world starting with `sp`.
 
 ---
 
 ### `/guard reload`
 
-Recarga el archivo `config.yml` en caliente sin reiniciar el servidor. Los cambios en títulos, materiales, mensajes y ajustes de paginación se aplican inmediatamente.
+Reloads the `config.yml` file on the fly without restarting the server. Changes to titles, materials, messages and pagination settings apply immediately.
 
-> Los GUIs que estén abiertos en ese momento **no** se actualizan solos. El jugador debe cerrar y volver a abrir el GUI para ver los cambios.
+> GUIs that are open at that moment are **not** updated automatically. The player must close and reopen the GUI to see the changes.

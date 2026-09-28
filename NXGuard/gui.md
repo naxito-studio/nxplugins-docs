@@ -1,159 +1,159 @@
-# Uso del GUI
+# GUI Usage
 
-NXGuard tiene dos pantallas principales: el **menú de regiones** y el **editor de flags**. Ambas son inventarios de 54 slots (6 filas × 9 columnas).
+NXGuard has two main screens: the **regions menu** and the **flag editor**. Both are 54-slot inventories (6 rows × 9 columns).
 
 ---
 
-## Menú de regiones
+## Regions menu
 
-Se abre con `/guard gui`.
+Opens with `/guard gui`.
 
 ### Layout
 
 ```
 ┌─────────────────────────────────────────────┐
-│  R  R  R  R  R  R  R  R  R   ← fila 1      │
-│  R  R  R  R  R  R  R  R  R   ← fila 2      │
-│  R  R  R  R  R  R  R  R  R   ← fila 3      │
-│  R  R  R  R  R  R  R  R  R   ← fila 4      │
-│  R  R  R  R  R  R  R  R  R   ← fila 5      │
-│  ←  .  .  .  .  .  .  .  →   ← fila 6 nav │
+│  R  R  R  R  R  R  R  R  R   ← row 1       │
+│  R  R  R  R  R  R  R  R  R   ← row 2       │
+│  R  R  R  R  R  R  R  R  R   ← row 3       │
+│  R  R  R  R  R  R  R  R  R   ← row 4       │
+│  R  R  R  R  R  R  R  R  R   ← row 5       │
+│  ←  .  .  .  .  .  .  .  →   ← row 6 nav   │
 └─────────────────────────────────────────────┘
 
-R = ítem de región
-← = botón página anterior (slot 45)
-→ = botón página siguiente (slot 53)
-. = slots vacíos
+R = region item
+← = previous page button (slot 45)
+→ = next page button (slot 53)
+. = empty slots
 ```
 
-- Las filas 1-5 (slots 0-44) muestran hasta **45 regiones** por página, ordenadas alfabéticamente sin distinción de mayúsculas.
-- Si hay más regiones que slots, aparece la flecha **→** en slot 53. Si no es la primera página, aparece **←** en slot 45.
+- Rows 1-5 (slots 0-44) show up to **45 regions** per page, sorted alphabetically and case-insensitively.
+- If there are more regions than slots, the **→** arrow appears in slot 53. If it is not the first page, **←** appears in slot 45.
 
-### Ítem de región
+### Region item
 
-Cada región se muestra como un **WHITE_BANNER** (configurable) con:
+Each region is shown as a **WHITE_BANNER** (configurable) with:
 
-- **Nombre:** el ID de la región en amarillo.
+- **Name:** the region ID in yellow.
 - **Lore:**
-  - Mundo en el que está la región.
-  - Prioridad de la región.
-  - Número de flags con valor asignado y activas (ALLOW).
-  - Instrucción de uso.
+  - World the region is in.
+  - Region priority.
+  - Number of flags with an assigned value and enabled (ALLOW).
+  - Usage instruction.
 
-### Interacción
+### Interaction
 
-| Acción | Resultado |
+| Action | Result |
 |---|---|
-| Click izquierdo en una región | Abre el editor de flags de esa región. |
-| Click en `←` | Va a la página anterior de regiones. |
-| Click en `→` | Va a la página siguiente de regiones. |
-| Click en cualquier otro slot | Sin efecto. |
+| Left click on a region | Opens that region's flag editor. |
+| Click on `←` | Goes to the previous page of regions. |
+| Click on `→` | Goes to the next page of regions. |
+| Click on any other slot | No effect. |
 
-> No es posible sacar ítems del inventario ni moverlos. Todos los clics son cancelados automáticamente.
+> It is not possible to take items out of the inventory or move them. All clicks are cancelled automatically.
 
 ---
 
-## Editor de flags
+## Flag editor
 
-Se abre al hacer click en una región del menú anterior.
+Opens when you click a region in the previous menu.
 
 ### Layout
 
 ```
 ┌─────────────────────────────────────────────┐
-│  F  F  F  F  F  F  F  F  F   ← fila 1      │
-│  F  F  F  F  F  F  F  F  F   ← fila 2      │
-│  F  F  F  F  F  F  F  F  F   ← fila 3      │
-│  F  F  F  F  F  F  F  F  F   ← fila 4      │
-│  F  F  F  F  F  F  F  F  F   ← fila 5      │
-│  .  .  .  .  ←  .  .  .  →   ← fila 6 nav │
+│  F  F  F  F  F  F  F  F  F   ← row 1       │
+│  F  F  F  F  F  F  F  F  F   ← row 2       │
+│  F  F  F  F  F  F  F  F  F   ← row 3       │
+│  F  F  F  F  F  F  F  F  F   ← row 4       │
+│  F  F  F  F  F  F  F  F  F   ← row 5       │
+│  .  .  .  .  ←  .  .  .  →   ← row 6 nav   │
 └─────────────────────────────────────────────┘
 
-F = ítem de flag
-← = botón "Volver al listado" (slot 49)
-→ = botón "Página siguiente de flags" (slot 53, solo si hay más flags)
-. = slots vacíos
+F = flag item
+← = "Back to list" button (slot 49)
+→ = "Next flags page" button (slot 53, only if there are more flags)
+. = empty slots
 ```
 
-- Las filas 1-5 (slots 0-44) muestran hasta **45 flags** por página, ordenadas alfabéticamente.
-- Si WorldGuard o WorldGuard Extra Flags tienen más de 45 flags registradas, aparece la flecha **→** en slot 53 para navegar a la siguiente página.
+- Rows 1-5 (slots 0-44) show up to **45 flags** per page, sorted alphabetically.
+- If WorldGuard or WorldGuard Extra Flags have more than 45 registered flags, the **→** arrow appears in slot 53 to navigate to the next page.
 
-### Ítem de flag
+### Flag item
 
-Cada flag se muestra con un **tinte de color** según su estado:
+Each flag is shown with a **color tint** depending on its state:
 
-| Material | Color | Estado |
+| Material | Color | State |
 |---|---|---|
-| `LIME_DYE` | Verde lima | `ALLOW` — activada explícitamente |
-| `RED_DYE` | Rojo | `DENY` — desactivada explícitamente |
-| `GRAY_DYE` | Gris | `NONE` — sin valor asignado (usa el default de WorldGuard) |
+| `LIME_DYE` | Lime green | `ALLOW` — explicitly enabled |
+| `RED_DYE` | Red | `DENY` — explicitly disabled |
+| `GRAY_DYE` | Gray | `NONE` — no value set (uses WorldGuard's default) |
 
-El **lore** de cada flag es dinámico y muestra:
+The **lore** of each flag is dynamic and shows:
 
-1. El estado actual en texto coloreado.
-2. Una línea vacía de separación.
-3. Las instrucciones de click **adaptadas al estado actual**.
+1. The current state in colored text.
+2. An empty separator line.
+3. The click instructions **adapted to the current state**.
 
-#### Ejemplos de lore
+#### Lore examples
 
-**Flag en estado NONE (gris):**
+**Flag in NONE state (gray):**
 ```
-Estado: Neutral (predeterminado)
+State: Neutral (default)
 
-Click izquierdo → activar (allow)
-Click derecho → desactivar (deny)
-```
-
-**Flag en estado ALLOW (lima):**
-```
-Estado: Activada (allow)
-
-Click izquierdo → desactivar (deny)
-Click derecho → resetear a neutro
+Left click → enable (allow)
+Right click → disable (deny)
 ```
 
-**Flag en estado DENY (rojo):**
+**Flag in ALLOW state (lime):**
 ```
-Estado: Desactivada (deny)
+State: Enabled (allow)
 
-Click izquierdo → activar (allow)
-Click derecho → resetear a neutro
-```
-
-**Flag no editable desde GUI:**
-```
-Estado: Activada (allow)
-
-No editable desde el GUI
+Left click → disable (deny)
+Right click → reset to neutral
 ```
 
-### Interacción
+**Flag in DENY state (red):**
+```
+State: Disabled (deny)
 
-| Acción | Estado actual | Resultado |
+Left click → enable (allow)
+Right click → reset to neutral
+```
+
+**Flag not editable from the GUI:**
+```
+State: Enabled (allow)
+
+Not editable from the GUI
+```
+
+### Interaction
+
+| Action | Current state | Result |
 |---|---|---|
-| Click izquierdo | NONE | → ALLOW |
-| Click izquierdo | ALLOW | → DENY |
-| Click izquierdo | DENY | → ALLOW |
-| Click derecho | NONE | → DENY |
-| Click derecho | ALLOW | → NONE |
-| Click derecho | DENY | → NONE |
-| Click en `←` (slot 49) | — | Vuelve al menú de regiones en la página donde estaba. |
-| Click en `→` (slot 53) | — | Va a la siguiente página de flags. |
+| Left click | NONE | → ALLOW |
+| Left click | ALLOW | → DENY |
+| Left click | DENY | → ALLOW |
+| Right click | NONE | → DENY |
+| Right click | ALLOW | → NONE |
+| Right click | DENY | → NONE |
+| Click on `←` (slot 49) | — | Returns to the regions menu on the page it was on. |
+| Click on `→` (slot 53) | — | Goes to the next flags page. |
 
-> Cada vez que se cambia una flag, el cambio se guarda en disco inmediatamente (`saveChanges()`) y el slot del ítem se actualiza visualmente sin cerrar el inventario.
+> Every time a flag is changed, the change is saved to disk immediately (`saveChanges()`) and the item slot is updated visually without closing the inventory.
 
 ---
 
-## Navegación completa
+## Full navigation
 
 ```
 /guard gui
-    └─► Menú de regiones (página 0)
-            │  click en región
-            └─► Editor de flags (flagPage 0)
+    └─► Regions menu (page 0)
+            │  click on region
+            └─► Flag editor (flagPage 0)
                     │  click → (slot 53)
-                    └─► Editor de flags (flagPage 1)
+                    └─► Flag editor (flagPage 1)
                             │  ...
                     │  click ← (slot 49)
-                    └─► Menú de regiones (misma página de lista)
+                    └─► Regions menu (same list page)
 ```

@@ -1,18 +1,18 @@
-# Configuración — config.yml
+# Configuration — config.yml
 
-El archivo `config.yml` se genera automáticamente en `plugins/NXMines/config.yml` la primera vez que el servidor inicia con el plugin. Para aplicar cambios usa `/mine reload` o reinicia el servidor.
+The `config.yml` file is generated automatically at `plugins/NXMines/config.yml` the first time the server starts with the plugin. To apply changes use `/mine reload` or restart the server.
 
 ---
 
-## Archivo completo con comentarios
+## Full file with comments
 
 ```yaml
 # ============================================================
 #  NXMines — Main Configuration
 # ============================================================
 
-# Idioma de los mensajes. Opciones: "es" (Español), "en" (English)
-# Carga el archivo: plugins/NXMines/lang/messages-<messages>.yml
+# Language of the messages. Options: "es" (Español), "en" (English)
+# Loads the file: plugins/NXMines/lang/messages-<messages>.yml
 messages: "es"
 
 # -----------------------------------------------------------------
@@ -43,137 +43,137 @@ database:
 # Performance
 # -----------------------------------------------------------------
 performance:
-  # Bloques colocados por tick durante un reinicio por lotes.
-  # Más alto = reinicio más rápido, mayor impacto en el TPS.
+  # Blocks placed per tick during a batched reset.
+  # Higher = faster reset, bigger impact on TPS.
   blocks-per-tick: 5000
 
-  # Las minas con un volumen <= a este valor usan InstantResetStrategy
-  # (todos los bloques en un solo tick, sin sobrecarga de lotes).
+  # Mines with a volume <= this value use InstantResetStrategy
+  # (all blocks in a single tick, no batching overhead).
   instant-reset-threshold: 1000
 
-  # Número máximo de minas cargadas en memoria simultáneamente.
-  # 0 = sin límite (carga todas las minas).
+  # Maximum number of mines loaded in memory at the same time.
+  # 0 = no limit (loads all mines).
   max-loaded-mines: 0
 
 # -----------------------------------------------------------------
 # Mines
 # -----------------------------------------------------------------
 mines:
-  # Permitir que las regiones de minas se solapen entre sí.
+  # Allow mine regions to overlap each other.
   allow-region-overlap: false
 
-  # Advertir y pedir confirmación si el volumen cambia más que
-  # esta fracción al redefinir (0.5 = 50%).
+  # Warn and ask for confirmation if the volume changes by more than
+  # this fraction when redefining (0.5 = 50%).
   redefine-size-change-warning-threshold: 0.5
 
-  # Intervalo de reinicio por defecto en segundos para nuevas minas.
+  # Default reset interval in seconds for new mines.
   default-reset-interval: 300
 
-  # Si se deben emitir mensajes cuando una mina se reinicia.
+  # Whether messages should be broadcast when a mine resets.
   broadcast-reset-messages: true
 
-  # Destinatarios de los mensajes de reinicio:
-  #   GLOBAL  — todos los jugadores online
-  #   RADIUS  — jugadores en un radio de broadcast-radius bloques
-  #   MINE    — solo jugadores dentro de la región de la mina
-  #   NONE    — desactivar mensajes de reinicio completamente
+  # Recipients of reset messages:
+  #   GLOBAL  — all online players
+  #   RADIUS  — players within broadcast-radius blocks
+  #   MINE    — only players inside the mine's region
+  #   NONE    — disable reset messages completely
   broadcast-mode: GLOBAL
   broadcast-radius: 100
 
-  # Forzar reinicio si la mina cae por debajo de este % de bloques.
-  # 0 = desactivado.
+  # Force a reset if the mine falls below this % of blocks.
+  # 0 = disabled.
   auto-reset-percentage: 0
 
 # -----------------------------------------------------------------
 # Drops
 # -----------------------------------------------------------------
 drops:
-  # Cómo se entregan los drops:
-  #   INVENTORY — van directamente al inventario del jugador
-  #   GROUND    — caen al suelo en la posición del jugador
+  # How drops are delivered:
+  #   INVENTORY — go straight to the player's inventory
+  #   GROUND    — drop on the ground at the player's position
   mode: INVENTORY
 
-  # Si hay un plugin de auto-pickup activo, siempre se usa INVENTORY.
+  # If an auto-pickup plugin is active, INVENTORY is always used.
   force-inventory-with-autopickup: true
 
 # -----------------------------------------------------------------
 # Text formatting
 # -----------------------------------------------------------------
 text:
-  # Formato de fecha/hora para placeholders como %mine_next_reset%.
-  # Usa patrones de Java DateTimeFormatter.
+  # Date/time format for placeholders such as %mine_next_reset%.
+  # Uses Java DateTimeFormatter patterns.
   datetime-format: "HH:mm:ss"
 
-  # Formato del tiempo restante.
-  # Tokens: {h} horas, {m} minutos, {s} segundos
+  # Format of the remaining time.
+  # Tokens: {h} hours, {m} minutes, {s} seconds
   time-format: "{h}h {m}m {s}s"
 ```
 
 ---
 
-## Referencia de secciones
+## Section reference
 
 ### `messages`
 
-| Clave | Tipo | Descripción |
+| Key | Type | Description |
 |---|---|---|
-| `messages` | String (`"es"` / `"en"`) | Idioma de los mensajes. Carga el archivo `lang/messages-<valor>.yml`. |
+| `messages` | String (`"es"` / `"en"`) | Language of the messages. Loads the file `lang/messages-<value>.yml`. |
 
 ---
 
 ### `database`
 
-| Clave | Tipo | Descripción |
+| Key | Type | Description |
 |---|---|---|
-| `type` | String | Motor de base de datos: `SQLITE`, `MYSQL` o `MARIADB`. |
-| `sqlite.file` | String | Nombre del archivo SQLite dentro de `plugins/NXMines/`. |
-| `mysql.host` | String | Host del servidor MySQL. |
-| `mysql.port` | Integer | Puerto del servidor MySQL. |
-| `mysql.database` | String | Nombre de la base de datos MySQL. |
-| `mysql.username` | String | Usuario de la base de datos. |
-| `mysql.password` | String | Contraseña de la base de datos. |
-| `mysql.pool.*` | Varios | Parámetros del pool de conexiones HikariCP. |
+| `type` | String | Database engine: `SQLITE`, `MYSQL` or `MARIADB`. |
+| `sqlite.file` | String | Name of the SQLite file inside `plugins/NXMines/`. |
+| `mysql.host` | String | MySQL server host. |
+| `mysql.port` | Integer | MySQL server port. |
+| `mysql.database` | String | MySQL database name. |
+| `mysql.username` | String | Database user. |
+| `mysql.password` | String | Database password. |
+| `mysql.pool.*` | Various | HikariCP connection pool parameters. |
 
-> Cambiar el tipo de base de datos requiere reiniciar el servidor. Los datos **no** se migran automáticamente entre SQLite y MySQL.
+> Changing the database type requires restarting the server. Data is **not** migrated automatically between SQLite and MySQL.
 
 ---
 
 ### `performance`
 
-| Clave | Tipo | Descripción |
+| Key | Type | Description |
 |---|---|---|
-| `blocks-per-tick` | Integer | Bloques colocados por tick en `BatchResetStrategy`. Valor por defecto: `5000`. |
-| `instant-reset-threshold` | Integer | Volumen máximo (en bloques) para usar `InstantResetStrategy`. Valor por defecto: `1000`. |
-| `max-loaded-mines` | Integer | Límite de minas en memoria. `0` = sin límite. |
+| `blocks-per-tick` | Integer | Blocks placed per tick in `BatchResetStrategy`. Default value: `5000`. |
+| `instant-reset-threshold` | Integer | Maximum volume (in blocks) to use `InstantResetStrategy`. Default value: `1000`. |
+| `max-loaded-mines` | Integer | Limit of mines in memory. `0` = no limit. |
 
 ---
 
 ### `mines`
 
-| Clave | Tipo | Descripción |
+| Key | Type | Description |
 |---|---|---|
-| `allow-region-overlap` | Boolean | Si `true`, las regiones de minas pueden solaparse. |
-| `redefine-size-change-warning-threshold` | Double (0–1) | Umbral de cambio de volumen para requerir confirmación al redefinir. |
-| `default-reset-interval` | Integer | Intervalo de reinicio en segundos para nuevas minas. |
-| `broadcast-reset-messages` | Boolean | Si `true`, se emiten mensajes al reiniciar una mina. |
-| `broadcast-mode` | String | `GLOBAL`, `RADIUS`, `MINE` o `NONE`. |
-| `broadcast-radius` | Integer | Radio en bloques (solo para `broadcast-mode: RADIUS`). |
-| `auto-reset-percentage` | Integer (0–100) | Fuerza reinicio si los bloques caen por debajo de este %. `0` = desactivado. |
+| `allow-region-overlap` | Boolean | If `true`, mine regions can overlap. |
+| `redefine-size-change-warning-threshold` | Double (0–1) | Volume change threshold that requires confirmation when redefining. |
+| `default-reset-interval` | Integer | Reset interval in seconds for new mines. |
+| `broadcast-reset-messages` | Boolean | If `true`, messages are broadcast when a mine resets. |
+| `broadcast-mode` | String | `GLOBAL`, `RADIUS`, `MINE` or `NONE`. |
+| `broadcast-radius` | Integer | Radius in blocks (only for `broadcast-mode: RADIUS`). |
+| `auto-reset-percentage` | Integer (0–100) | Forces a reset if blocks fall below this %. `0` = disabled. |
 
 ---
 
 ### `drops`
 
-| Clave | Tipo | Descripción |
+| Key | Type | Description |
 |---|---|---|
-| `mode` | String | `INVENTORY` (inventario directo) o `GROUND` (al suelo). |
-| `force-inventory-with-autopickup` | Boolean | Si hay auto-pickup, siempre usa `INVENTORY`. |
+| `mode` | String | `INVENTORY` (straight to inventory) or `GROUND` (on the ground). |
+| `force-inventory-with-autopickup` | Boolean | If there is auto-pickup, always uses `INVENTORY`. |
 
 ---
 
 ### `text`
 
-| Clave | Tipo | Descripción |
+| Key | Type | Description |
 |---|---|---|
-| `datetime-format` | String | Patrón de `DateTimeFormatter` de Java para fechas. |
-| `time-format` | String | Formato del tiempo restante. Tokens: `{h}`, `{m}`, `{s}`. |
+| `datetime-format` | String | Java `DateTimeFormatter` pattern for dates. |
+| `time-format` | String | Format of the remaining time. Tokens: `{h}`, `{m}`, `{s}`. |

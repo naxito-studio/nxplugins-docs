@@ -1,33 +1,33 @@
-# Instalación
+# Installation
 
-## Requisitos previos
+## Prerequisites
 
-Antes de instalar NXMines asegúrate de tener:
+Before installing NXMines make sure you have:
 
-- Un servidor **Paper 1.20** o superior.
-- **WorldEdit** o **FastAsyncWorldEdit (FAWE)** instalado y funcionando.
-- **Java 17** o superior.
+- A **Paper 1.20** (or higher) server.
+- **WorldEdit** or **FastAsyncWorldEdit (FAWE)** installed and working.
+- **Java 17** or higher.
 
-> NXMines usa Paper como servidor objetivo. Puede funcionar en versiones derivadas como Purpur, pero el soporte oficial es solo para Paper.
+> NXMines targets Paper as its server platform. It may work on derived versions such as Purpur, but official support is for Paper only.
 
 ---
 
-## Pasos de instalación
+## Installation steps
 
-### 1. Colocar el .jar en la carpeta plugins
+### 1. Put the .jar in the plugins folder
 
-Copia el archivo `NXMines-<version>.jar` dentro de la carpeta `plugins/` de tu servidor.
+Copy the `NXMines-<version>.jar` file into your server's `plugins/` folder.
 
 ```
-servidor/
+server/
 └── plugins/
-    ├── WorldEdit.jar      (o FastAsyncWorldEdit.jar)
-    └── NXMines.jar        ← aquí
+    ├── WorldEdit.jar      (or FastAsyncWorldEdit.jar)
+    └── NXMines.jar        ← here
 ```
 
-### 2. Iniciar o reiniciar el servidor
+### 2. Start or restart the server
 
-Arranca el servidor normalmente. NXMines generará su estructura de archivos en:
+Start the server normally. NXMines will generate its file structure at:
 
 ```
 plugins/
@@ -36,53 +36,53 @@ plugins/
     ├── menus.yml
     ├── particles.yml
     ├── sounds.yml
-    ├── nxmines.db         ← base de datos SQLite (por defecto)
+    ├── nxmines.db         ← SQLite database (default)
     └── lang/
         ├── messages-es.yml
         └── messages-en.yml
 ```
 
-### 3. Verificar la instalación
+### 3. Verify the installation
 
-Revisa la consola. Si todo va bien verás líneas similares a:
+Check the console. If everything goes well you will see lines similar to:
 
 ```
-[NXMines] Hook: WorldEdit detectado.
-[NXMines] Hook: PlaceholderAPI detectado.
-[NXMines] Base de datos: SQLite inicializada correctamente.
-[NXMines] NXMines habilitado correctamente.
+[NXMines] Hook: WorldEdit detected.
+[NXMines] Hook: PlaceholderAPI detected.
+[NXMines] Database: SQLite initialized successfully.
+[NXMines] NXMines enabled successfully.
 ```
 
 ---
 
-## Dependencias opcionales
+## Optional dependencies
 
-| Plugin | Efecto al instalarlo |
+| Plugin | Effect when installed |
 |---|---|
-| **PlaceholderAPI** | Habilita los placeholders `%nxmines_*%` para scoreboard, chat, etc. |
-| **Vault** | Permite integración de economía en los drops (comandos de economía). |
-| **CataMines** | Permite importar sus minas con `/mine convert catamines`. |
-| **AxMines** | Permite importar sus minas con `/mine convert axmines`. |
+| **PlaceholderAPI** | Enables the `%nxmines_*%` placeholders for scoreboards, chat, etc. |
+| **Vault** | Allows economy integration in drops (economy commands). |
+| **CataMines** | Allows importing its mines with `/mine convert catamines`. |
+| **AxMines** | Allows importing its mines with `/mine convert axmines`. |
 
-Todos los plugins opcionales deben cargarse **antes** que NXMines. Al iniciar, NXMines informa en consola cuáles detectó.
+All optional plugins must load **before** NXMines. On startup, NXMines reports in the console which ones it detected.
 
 ---
 
-## Cambiar el idioma
+## Changing the language
 
-Por defecto los mensajes están en **español**. Para cambiarlos a inglés, edita `config.yml`:
+By default the messages are in **Spanish**. To switch them to English, edit `config.yml`:
 
 ```yaml
 messages: "en"
 ```
 
-Y ejecuta `/mine reload` para aplicar el cambio.
+And run `/mine reload` to apply the change.
 
 ---
 
-## Configurar base de datos MySQL
+## Configuring a MySQL database
 
-Por defecto NXMines usa SQLite (archivo local). Para usar MySQL o MariaDB edita la sección `database` del `config.yml`:
+By default NXMines uses SQLite (local file). To use MySQL or MariaDB edit the `database` section of `config.yml`:
 
 ```yaml
 database:
@@ -92,17 +92,17 @@ database:
     port: 3306
     database: nxmines
     username: root
-    password: "tu_contraseña"
+    password: "your_password"
 ```
 
-Reinicia el servidor después de cambiar el tipo de base de datos. Los datos no se migran automáticamente entre SQLite y MySQL.
+Restart the server after changing the database type. Data is not migrated automatically between SQLite and MySQL.
 
 ---
 
-## Actualizar NXMines
+## Updating NXMines
 
-1. Detén el servidor.
-2. Reemplaza el `.jar` antiguo por el nuevo en `plugins/`.
-3. Inicia el servidor.
+1. Stop the server.
+2. Replace the old `.jar` with the new one in `plugins/`.
+3. Start the server.
 
-> La carpeta `plugins/NXMines/` y todos sus archivos (incluida la base de datos) se conservan entre actualizaciones. Revisa las notas de la versión por si hay nuevas claves en los archivos de configuración.
+> The `plugins/NXMines/` folder and all its files (including the database) are kept between updates. Check the release notes in case there are new keys in the configuration files.

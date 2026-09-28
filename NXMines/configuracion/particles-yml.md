@@ -1,23 +1,23 @@
-# Configuración — particles.yml
+# Configuration — particles.yml
 
-El archivo `particles.yml` controla las partículas que se emiten durante eventos de minas: inicio de reinicio, fin de reinicio y creación de mina.
+The `particles.yml` file controls the particles emitted during mine events: reset start, reset end and mine creation.
 
-Para aplicar cambios ejecuta `/mine reload`.
+To apply changes run `/mine reload`.
 
 ---
 
-## Archivo completo con comentarios
+## Full file with comments
 
 ```yaml
 # ============================================================
 #  NXMines — Particles
-#  particle: nombre del enum Particle de Bukkit
-#  count: número de partículas a emitir
-#  offset-x/y/z: radio de dispersión en cada eje
-#  extra: velocidad / valor extra (depende del tipo de partícula)
+#  particle: name of the Bukkit Particle enum
+#  count: number of particles to emit
+#  offset-x/y/z: spread radius on each axis
+#  extra: speed / extra value (depends on the particle type)
 #  enabled: true/false
 #
-#  Para partículas tipo REDSTONE dust:
+#  For REDSTONE dust particles:
 #    color: "#RRGGBB"
 #    dust-size: 1.0
 # ============================================================
@@ -54,33 +54,33 @@ mine:
 
 ---
 
-## Referencia de eventos
+## Event reference
 
-| Sección | Descripción |
+| Section | Description |
 |---|---|
-| `reset.start` | Partículas al inicio de un reinicio de mina. |
-| `reset.complete` | Partículas al completar un reinicio de mina. |
-| `mine.created` | Partículas al crear una nueva mina. |
+| `reset.start` | Particles at the start of a mine reset. |
+| `reset.complete` | Particles when a mine reset completes. |
+| `mine.created` | Particles when a new mine is created. |
 
 ---
 
-## Campos por evento
+## Fields per event
 
-| Campo | Tipo | Descripción |
+| Field | Type | Description |
 |---|---|---|
-| `enabled` | Boolean | Si `false`, se desactivan las partículas de este evento. |
-| `particle` | String | Nombre del enum `Particle` de Bukkit (ej: `HAPPY_VILLAGER`, `FLAME`, `REDSTONE`). |
-| `count` | Integer | Número de partículas a emitir. |
-| `offset-x` | Double | Radio de dispersión en el eje X. |
-| `offset-y` | Double | Radio de dispersión en el eje Y. |
-| `offset-z` | Double | Radio de dispersión en el eje Z. |
-| `extra` | Double | Velocidad extra de la partícula (varía según el tipo). |
+| `enabled` | Boolean | If `false`, particles for this event are disabled. |
+| `particle` | String | Name of the Bukkit `Particle` enum (e.g. `HAPPY_VILLAGER`, `FLAME`, `REDSTONE`). |
+| `count` | Integer | Number of particles to emit. |
+| `offset-x` | Double | Spread radius on the X axis. |
+| `offset-y` | Double | Spread radius on the Y axis. |
+| `offset-z` | Double | Spread radius on the Z axis. |
+| `extra` | Double | Extra particle speed (varies by type). |
 
 ---
 
-## Partículas de tipo REDSTONE
+## REDSTONE-type particles
 
-Para partículas del tipo `REDSTONE` puedes añadir los campos adicionales:
+For `REDSTONE` type particles you can add the following extra fields:
 
 ```yaml
 reset:
@@ -96,24 +96,24 @@ reset:
     dust-size: 1.5
 ```
 
-| Campo | Tipo | Descripción |
+| Field | Type | Description |
 |---|---|---|
-| `color` | String (HEX) | Color de la partícula REDSTONE en formato `#RRGGBB`. |
-| `dust-size` | Double | Tamaño del polvo de redstone. |
+| `color` | String (HEX) | Color of the REDSTONE particle in `#RRGGBB` format. |
+| `dust-size` | Double | Size of the redstone dust. |
 
 ---
 
-## Ejemplos de partículas comunes
+## Common particle examples
 
-| Nombre de partícula | Descripción |
+| Particle name | Description |
 |---|---|
-| `HAPPY_VILLAGER` | Partículas verdes brillantes de villager feliz. |
-| `TOTEM_OF_UNDYING` | Efecto dramático de tótem de inmortalidad. |
-| `FLAME` | Llamas pequeñas. |
-| `HEART` | Corazones. |
-| `CRIT` | Críticos (estrellas doradas). |
-| `SPELL_WITCH` | Partículas violetas de bruja. |
-| `EXPLOSION_NORMAL` | Pequeña explosión. |
-| `REDSTONE` | Polvo de redstone configurable en color. |
+| `HAPPY_VILLAGER` | Bright green happy villager particles. |
+| `TOTEM_OF_UNDYING` | Dramatic totem of undying effect. |
+| `FLAME` | Small flames. |
+| `HEART` | Hearts. |
+| `CRIT` | Crits (golden stars). |
+| `SPELL_WITCH` | Purple witch particles. |
+| `EXPLOSION_NORMAL` | Small explosion. |
+| `REDSTONE` | Redstone dust with configurable color. |
 
-Consulta la documentación de Bukkit para la lista completa de partículas disponibles en tu versión.
+See the Bukkit documentation for the full list of particles available in your version.

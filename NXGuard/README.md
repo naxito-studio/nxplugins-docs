@@ -2,46 +2,46 @@
 
 ![NXGuard Logo](../.vitepress/public/nxguard.png)
 
-**NXGuard** es un plugin para servidores Minecraft que te permite gestionar las flags de tus regiones de WorldGuard de forma visual, sin necesidad de escribir comandos. Todo se hace desde un menú de inventario.
+**NXGuard** is a Minecraft server plugin that lets you manage your WorldGuard region flags visually, without typing commands. Everything is done from an inventory menu.
 
 ---
 
-## ¿Para qué sirve?
+## What is it for?
 
-Si usas WorldGuard en tu servidor para proteger zonas (spawn, tiendas, arenas PvP, etc.), NXGuard te da una interfaz gráfica para activar o desactivar las flags de cada región con un solo click, en lugar de tener que escribir `/rg flag <región> <flag> <valor>` cada vez.
-
----
-
-## ¿Qué puedes hacer con NXGuard?
-
-- Ver todas las regiones de tu mundo en un menú paginado.
-- Abrir el editor de flags de cualquier región con un click.
-- Ver el estado de cada flag de un vistazo gracias a los colores:
-  - **Verde lima** → flag activada (ALLOW)
-  - **Rojo** → flag desactivada (DENY)
-  - **Gris** → sin valor asignado (NONE - usa el comportamiento por defecto de WorldGuard)
-- Activar, desactivar o resetear flags con click izquierdo y derecho.
-- Consultar la información completa de una región por chat.
-- Personalizar títulos, colores y mensajes desde el `config.yml`.
+If you use WorldGuard on your server to protect areas (spawn, shops, PvP arenas, etc.), NXGuard gives you a graphical interface to enable or disable the flags of each region with a single click, instead of typing `/rg flag <region> <flag> <value>` every time.
 
 ---
 
-## Requisitos
+## What can you do with NXGuard?
 
-| Requisito | Notas |
+- See all the regions of your world in a paginated menu.
+- Open the flag editor of any region with one click.
+- See the state of each flag at a glance thanks to colors:
+  - **Lime green** → flag enabled (ALLOW)
+  - **Red** → flag disabled (DENY)
+  - **Gray** → no value set (NONE - uses WorldGuard's default behavior)
+- Enable, disable or reset flags with left and right click.
+- View the full information of a region in chat.
+- Customize titles, colors and messages from `config.yml`.
+
+---
+
+## Requirements
+
+| Requirement | Notes |
 |---|---|
-| Minecraft Paper / Spigot | Versión 1.20 o superior |
-| WorldGuard | Obligatorio |
-| WorldGuard Extra Flags | Opcional — sus flags aparecen automáticamente |
+| Minecraft Paper / Spigot | Version 1.20 or higher |
+| WorldGuard | Required |
+| WorldGuard Extra Flags | Optional — its flags show up automatically |
 
 ---
 
-## Contenido de esta guía
+## Guide contents
 
-- [Instalación](instalacion.md)
-- [Comandos](comandos.md)
-- [Permisos](permisos.md)
-- [Configuración](configuracion/config-yml.md)
-- [Uso del GUI](gui.md)
-- [Sistema de flags](flags.md)
-- [Preguntas frecuentes](faq.md)
+- [Installation](instalacion.md)
+- [Commands](comandos.md)
+- [Permissions](permisos.md)
+- [Configuration](configuracion/config-yml.md)
+- [GUI Usage](gui.md)
+- [Flag System](flags.md)
+- [FAQ](faq.md)

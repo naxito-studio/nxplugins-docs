@@ -1,143 +1,143 @@
-# Comandos
+# Commands
 
-El comando principal es `/mine`. Tiene un alias: `/nxmines`.
+The main command is `/mine`. It has one alias: `/nxmines`.
 
 ---
 
-## Resumen
+## Summary
 
-| Comando | Descripción | Permiso requerido |
+| Command | Description | Required permission |
 |---|---|---|
-| `/mine help` | Muestra la lista de subcomandos disponibles. | — |
-| `/mine create <nombre>` | Crea una mina con tu selección de WorldEdit / FAWE. | `nxmines.create` |
-| `/mine gui` | Abre el menú GUI con la lista de todas las minas. | `nxmines.gui` |
-| `/mine reset <nombre>` | Fuerza el reinicio inmediato de una mina. | `nxmines.reset` |
-| `/mine redefine <nombre> [confirm]` | Reemplaza la región de una mina con tu selección actual. | `nxmines.redefine` |
-| `/mine reload` | Recarga todos los archivos de configuración sin reiniciar. | `nxmines.reload` |
-| `/mine convert <plugin> [mina\|all] [--dry-run]` | Importa minas desde otro plugin (CataMines o AxMines). | `nxmines.convert` |
-| `/mine version` | Muestra la versión del plugin y el estado de los hooks. | `nxmines.version` |
+| `/mine help` | Shows the list of available subcommands. | — |
+| `/mine create <name>` | Creates a mine with your WorldEdit / FAWE selection. | `nxmines.create` |
+| `/mine gui` | Opens the GUI menu with the list of all mines. | `nxmines.gui` |
+| `/mine reset <name>` | Forces an immediate reset of a mine. | `nxmines.reset` |
+| `/mine redefine <name> [confirm]` | Replaces a mine's region with your current selection. | `nxmines.redefine` |
+| `/mine reload` | Reloads all configuration files without restarting. | `nxmines.reload` |
+| `/mine convert <plugin> [mine\|all] [--dry-run]` | Imports mines from another plugin (CataMines or AxMines). | `nxmines.convert` |
+| `/mine version` | Shows the plugin version and the hooks status. | `nxmines.version` |
 
 ---
 
-## Detalle de cada subcomando
+## Details of each subcommand
 
-### `/mine create <nombre>`
+### `/mine create <name>`
 
-**Solo jugadores** (no funciona desde consola).
+**Players only** (does not work from the console).
 
-Crea una nueva mina usando la selección activa de WorldEdit o FAWE como región. El nombre debe contener solo letras, números, guiones y guiones bajos (máximo 64 caracteres).
+Creates a new mine using the active WorldEdit or FAWE selection as its region. The name must contain only letters, numbers, hyphens and underscores (maximum 64 characters).
 
-**Flujo:**
-1. Selecciona el área en WorldEdit con la varita (`//wand`) y define los dos puntos.
-2. Ejecuta `/mine create spawn_mine`.
-3. La mina se crea y su contador de reinicio empieza.
-4. Accede al GUI con `/mine gui` para configurar composición y drops.
+**Flow:**
+1. Select the area in WorldEdit with the wand (`//wand`) and set the two points.
+2. Run `/mine create spawn_mine`.
+3. The mine is created and its reset counter starts.
+4. Access the GUI with `/mine gui` to configure composition and drops.
 
-**Errores posibles:**
-- `Nombre inválido` — el nombre contiene caracteres no permitidos.
-- `Ya existe una mina con ese nombre` — usa un nombre diferente.
-- `No tienes una selección activa` — haz una selección en WorldEdit primero.
-- `La región se solapa con otra mina` — ajusta la selección o activa `allow-region-overlap` en `config.yml`.
+**Possible errors:**
+- `Invalid name` — the name contains disallowed characters.
+- `A mine with that name already exists` — use a different name.
+- `You don't have an active selection` — make a WorldEdit selection first.
+- `The region overlaps with another mine` — adjust the selection or enable `allow-region-overlap` in `config.yml`.
 
 ---
 
 ### `/mine gui`
 
-**Solo jugadores** (no funciona desde consola).
+**Players only** (does not work from the console).
 
-Abre el menú GUI principal con la lista de todas las minas del servidor. Desde aquí puedes ver el estado de cada mina y acceder a su editor.
+Opens the main GUI menu with the list of all the server's mines. From here you can see each mine's status and access its editor.
 
 ---
 
-### `/mine reset <nombre>`
+### `/mine reset <name>`
 
-Disponible desde consola y para jugadores.
+Available from the console and for players.
 
-Fuerza el reinicio inmediato de la mina indicada, independientemente de su temporizador. Si la mina ya está reiniciándose, muestra un mensaje de error.
+Forces an immediate reset of the given mine, regardless of its timer. If the mine is already resetting, it shows an error message.
 
 ```
 /mine reset spawn_mine
 ```
 
-El tab-completion autocompleta con los nombres de las minas existentes.
+Tab-completion autocompletes with the names of existing mines.
 
 ---
 
-### `/mine redefine <nombre> [confirm]`
+### `/mine redefine <name> [confirm]`
 
-**Solo jugadores** (no funciona desde consola).
+**Players only** (does not work from the console).
 
-Reemplaza la región de una mina existente con tu selección activa de WorldEdit / FAWE. La composición, los drops y el resto de configuración se conservan.
+Replaces the region of an existing mine with your active WorldEdit / FAWE selection. Composition, drops and the rest of the configuration are kept.
 
-Si el volumen de la nueva región difiere del original en más del umbral configurado (`redefine-size-change-warning-threshold` en `config.yml`), se muestra una advertencia y se requiere confirmación:
+If the volume of the new region differs from the original by more than the configured threshold (`redefine-size-change-warning-threshold` in `config.yml`), a warning is shown and confirmation is required:
 
 ```
 /mine redefine spawn_mine
-# → Advertencia: la nueva región difiere en tamaño (500 → 2000 bloques).
-#   Confirma con /mine redefine spawn_mine confirm
+# → Warning: the new region differs in size (500 → 2000 blocks).
+#   Confirm with /mine redefine spawn_mine confirm
 
 /mine redefine spawn_mine confirm
-# → La región de la mina spawn_mine ha sido actualizada.
+# → The region of mine spawn_mine has been updated.
 ```
 
 ---
 
 ### `/mine reload`
 
-Disponible desde consola y para jugadores.
+Available from the console and for players.
 
-Recarga en caliente todos los archivos de configuración:
+Hot-reloads all configuration files:
 - `config.yml`
 - `menus.yml`
 - `particles.yml`
 - `sounds.yml`
-- `lang/messages-<idioma>.yml`
+- `lang/messages-<language>.yml`
 
-Los cambios en mensajes, menús y ajustes de rendimiento se aplican inmediatamente. Los GUIs que estén abiertos deben cerrarse y reabrirse para reflejar los nuevos valores.
+Changes to messages, menus and performance settings apply immediately. GUIs that are open must be closed and reopened to reflect the new values.
 
 ---
 
-### `/mine convert <plugin> [mina|all] [--dry-run]`
+### `/mine convert <plugin> [mine|all] [--dry-run]`
 
-Disponible desde consola y para jugadores.
+Available from the console and for players.
 
-Importa minas desde otro plugin de minas compatible. Los plugins soportados actualmente son:
+Imports mines from another compatible mines plugin. The currently supported plugins are:
 
-| Argumento `<plugin>` | Origen |
+| `<plugin>` argument | Source |
 |---|---|
-| `catamines` | Importa desde CataMines |
-| `axmines` | Importa desde AxMines |
+| `catamines` | Imports from CataMines |
+| `axmines` | Imports from AxMines |
 
-**Ejemplos:**
+**Examples:**
 
 ```bash
-# Importar todas las minas de CataMines
+# Import all mines from CataMines
 /mine convert catamines all
 
-# Importar solo la mina "A" de AxMines
+# Import only mine "A" from AxMines
 /mine convert axmines A
 
-# Simulación sin aplicar cambios (dry-run)
+# Simulation without applying changes (dry-run)
 /mine convert catamines all --dry-run
 ```
 
-> El modo `--dry-run` muestra cuántas minas se importarían sin hacer cambios reales. Útil para verificar antes de ejecutar.
+> The `--dry-run` mode shows how many mines would be imported without making real changes. Useful for checking before running.
 
 ---
 
 ### `/mine version`
 
-Muestra información sobre el plugin, el entorno del servidor y el estado de cada hook:
+Shows information about the plugin, the server environment and the status of each hook:
 
 ```
  NXMines v1.0.0
- Autor(es): Naxito's Studios
+ Author(s): Naxito's Studios
 
  Java: 17.0.9
- Servidor: git-Paper-388 / 1.20.4-R0.1-SNAPSHOT
- Base de Datos: SQLITE
+ Server: git-Paper-388 / 1.20.4-R0.1-SNAPSHOT
+ Database: SQLITE
 
- Hooks de Plugins:
+ Plugin Hooks:
    WorldEdit/FAWE : ✔ WorldEdit 7.2.15
    PlaceholderAPI : ✔ 2.11.6
    Vault          : ✘ not found

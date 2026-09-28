@@ -1,18 +1,18 @@
-# Configuración — sounds.yml
+# Configuration — sounds.yml
 
-El archivo `sounds.yml` controla los sonidos que se reproducen durante eventos de minas: inicio de reinicio, fin de reinicio, creación de mina, eliminación de mina y acciones del GUI.
+The `sounds.yml` file controls the sounds played during mine events: reset start, reset end, mine creation, mine deletion and GUI actions.
 
-Para aplicar cambios ejecuta `/mine reload`.
+To apply changes run `/mine reload`.
 
 ---
 
-## Archivo completo con comentarios
+## Full file with comments
 
 ```yaml
 # ============================================================
 #  NXMines — Sounds
-#  sound: nombre del enum Sound de Bukkit (ver wiki.vg/Sounds)
-#  volume: 0.0–1.0+ (afecta el radio de audibilidad)
+#  sound: name of the Bukkit Sound enum (see wiki.vg/Sounds)
+#  volume: 0.0–1.0+ (affects the audible radius)
 #  pitch: 0.5–2.0
 #  enabled: true/false
 # ============================================================
@@ -65,43 +65,43 @@ gui:
 
 ---
 
-## Referencia de eventos
+## Event reference
 
-| Sección | Descripción |
+| Section | Description |
 |---|---|
-| `reset.start` | Sonido al comenzar un reinicio de mina. |
-| `reset.complete` | Sonido al terminar un reinicio de mina. |
-| `mine.created` | Sonido al crear una nueva mina. |
-| `mine.deleted` | Sonido al eliminar una mina. |
-| `gui.click` | Sonido al hacer click en un botón del GUI. |
-| `gui.error` | Sonido cuando ocurre un error en el GUI (ej: composición inválida). |
-| `gui.success` | Sonido cuando una acción del GUI tiene éxito (ej: guardar composición). |
+| `reset.start` | Sound when a mine reset begins. |
+| `reset.complete` | Sound when a mine reset finishes. |
+| `mine.created` | Sound when a new mine is created. |
+| `mine.deleted` | Sound when a mine is deleted. |
+| `gui.click` | Sound when clicking a GUI button. |
+| `gui.error` | Sound when an error occurs in the GUI (e.g. invalid composition). |
+| `gui.success` | Sound when a GUI action succeeds (e.g. saving the composition). |
 
 ---
 
-## Campos por evento
+## Fields per event
 
-| Campo | Tipo | Descripción |
+| Field | Type | Description |
 |---|---|---|
-| `enabled` | Boolean | Si `false`, se desactiva el sonido de este evento. |
-| `sound` | String | Nombre del enum `Sound` de Bukkit. |
-| `volume` | Double | Volumen del sonido. Valores mayores a 1.0 aumentan el radio de audibilidad. |
-| `pitch` | Double | Tono del sonido (0.5 = grave, 2.0 = agudo). |
+| `enabled` | Boolean | If `false`, the sound for this event is disabled. |
+| `sound` | String | Name of the Bukkit `Sound` enum. |
+| `volume` | Double | Sound volume. Values above 1.0 increase the audible radius. |
+| `pitch` | Double | Sound pitch (0.5 = low, 2.0 = high). |
 
 ---
 
-## Ejemplos de sonidos comunes
+## Common sound examples
 
-| Nombre de sonido | Descripción |
+| Sound name | Description |
 |---|---|
-| `BLOCK_BEACON_ACTIVATE` | Activación de baliza (profundo y suave). |
-| `BLOCK_BEACON_DEACTIVATE` | Desactivación de baliza. |
-| `ENTITY_PLAYER_LEVELUP` | Subir de nivel (alegre). |
-| `ENTITY_ITEM_BREAK` | Ítem rompiéndose. |
-| `UI_BUTTON_CLICK` | Click de botón de UI. |
-| `ENTITY_VILLAGER_NO` | Gruñido de villager (rechazo). |
-| `BLOCK_ANVIL_USE` | Uso de yunque. |
-| `ENTITY_ENDER_DRAGON_FLAP` | Alas de dragón del end. |
-| `BLOCK_NOTE_BLOCK_PLING` | Nota musical brillante. |
+| `BLOCK_BEACON_ACTIVATE` | Beacon activation (deep and smooth). |
+| `BLOCK_BEACON_DEACTIVATE` | Beacon deactivation. |
+| `ENTITY_PLAYER_LEVELUP` | Level up (cheerful). |
+| `ENTITY_ITEM_BREAK` | Item breaking. |
+| `UI_BUTTON_CLICK` | UI button click. |
+| `ENTITY_VILLAGER_NO` | Villager grunt (rejection). |
+| `BLOCK_ANVIL_USE` | Anvil use. |
+| `ENTITY_ENDER_DRAGON_FLAP` | Ender dragon wings. |
+| `BLOCK_NOTE_BLOCK_PLING` | Bright musical note. |
 
-Consulta la documentación de Bukkit para la lista completa de sonidos disponibles en tu versión.
+See the Bukkit documentation for the full list of sounds available in your version.

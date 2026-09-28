@@ -1,142 +1,142 @@
-# Preguntas frecuentes
+# Frequently Asked Questions
 
 ---
 
-## Instalación y compatibilidad
+## Installation and compatibility
 
-**¿NXMines funciona con Spigot?**
+**Does NXMines work with Spigot?**
 
-NXMines está desarrollado para **Paper 1.20+** y usa la API de Paper (classloader isolation, etc.). No está garantizado que funcione en Spigot puro. Se recomienda Paper, Purpur u otras distribuciones basadas en Paper.
-
----
-
-**¿Es compatible con FastAsyncWorldEdit (FAWE)?**
-
-Sí. NXMines detecta tanto WorldEdit como FAWE automáticamente. Puedes usar cualquiera de los dos para hacer selecciones al crear o redefinir minas.
+NXMines is developed for **Paper 1.20+** and uses the Paper API (classloader isolation, etc.). It is not guaranteed to work on pure Spigot. Paper, Purpur or other Paper-based distributions are recommended.
 
 ---
 
-**El servidor inicia pero NXMines no crea la base de datos.**
+**Is it compatible with FastAsyncWorldEdit (FAWE)?**
 
-Revisa que el servidor tenga permisos de escritura en la carpeta `plugins/NXMines/`. El archivo `nxmines.db` (SQLite) se crea automáticamente al primer inicio. Si usas MySQL, asegúrate de que las credenciales en `config.yml` sean correctas y que el servidor MySQL esté accesible.
-
----
-
-**¿Es compatible con versiones anteriores a 1.20?**
-
-No está garantizado. El `api-version` del plugin está fijado en `1.20`. En versiones anteriores algunos materiales y APIs pueden no estar disponibles.
+Yes. NXMines detects both WorldEdit and FAWE automatically. You can use either one to make selections when creating or redefining mines.
 
 ---
 
-## Creación de minas
+**The server starts but NXMines does not create the database.**
 
-**El comando `/mine create` dice "No tienes una selección activa".**
-
-Debes tener una selección de WorldEdit activa antes de ejecutar el comando. Usa la varita de WorldEdit (o `//wand`) y selecciona los dos puntos de tu región con click izquierdo y derecho. Si usas FAWE, funciona igual.
+Check that the server has write permissions on the `plugins/NXMines/` folder. The `nxmines.db` file (SQLite) is created automatically on first start. If you use MySQL, make sure the credentials in `config.yml` are correct and that the MySQL server is reachable.
 
 ---
 
-**Recibo "La región se solapa con otra mina".**
+**Is it compatible with versions older than 1.20?**
 
-Por defecto las regiones de minas no pueden solaparse. Para permitirlo, edita `config.yml`:
+It is not guaranteed. The plugin's `api-version` is fixed at `1.20`. In older versions some materials and APIs may not be available.
+
+---
+
+## Creating mines
+
+**The `/mine create` command says "You don't have an active selection".**
+
+You must have an active WorldEdit selection before running the command. Use the WorldEdit wand (or `//wand`) and select the two points of your region with left and right click. If you use FAWE, it works the same way.
+
+---
+
+**I get "The region overlaps with another mine".**
+
+By default mine regions cannot overlap. To allow it, edit `config.yml`:
 
 ```yaml
 mines:
   allow-region-overlap: true
 ```
 
-Y ejecuta `/mine reload`.
+And run `/mine reload`.
 
 ---
 
-**El nombre de mi mina se rechaza como inválido.**
+**My mine's name is rejected as invalid.**
 
-Los nombres solo pueden contener letras (`a-z`, `A-Z`), números (`0-9`), guiones (`-`) y guiones bajos (`_`). El nombre tampoco puede superar los 64 caracteres. Los espacios y caracteres especiales no están permitidos.
+Names can only contain letters (`a-z`, `A-Z`), numbers (`0-9`), hyphens (`-`) and underscores (`_`). The name also cannot exceed 64 characters. Spaces and special characters are not allowed.
 
 ---
 
 ## GUI
 
-**El menú del GUI se abre pero está vacío.**
+**The GUI menu opens but it is empty.**
 
-Significa que no hay minas creadas todavía. Usa `/mine create <nombre>` para crear la primera mina.
-
----
-
-**Arrastro un bloque al editor de composición pero no se añade.**
-
-El bloque que arrastras debe ser un material sólido colocable. Materiales como agua, aire o ítems no colocables no son válidos como bloques de mina.
+It means no mines have been created yet. Use `/mine create <name>` to create the first mine.
 
 ---
 
-**Al guardar la composición recibo "No se puede superar el 100%".**
+**I drag a block into the composition editor but it is not added.**
 
-La suma de los porcentajes de todos los bloques asignados no puede exceder el 100%. El ítem de resumen (slot 4 del editor de composición) muestra el total asignado y el porcentaje restante disponible.
-
----
-
-## Reinicios
-
-**¿Cuándo se reinicia una mina automáticamente?**
-
-NXMines reinicia una mina cuando:
-1. Su temporizador llega a cero (según el intervalo configurado).
-2. El porcentaje de bloques restantes cae por debajo de `auto-reset-percentage` (si está configurado en `config.yml`).
+The block you drag must be a solid, placeable material. Materials such as water, air or non-placeable items are not valid as mine blocks.
 
 ---
 
-**¿Qué estrategia de reinicio usa NXMines?**
+**When saving the composition I get "Cannot exceed 100%".**
 
-- Si el volumen de la región es ≤ `instant-reset-threshold` (por defecto 1000 bloques), se usa `InstantResetStrategy`: todos los bloques se colocan en un solo tick.
-- Si es mayor, se usa `BatchResetStrategy`: los bloques se colocan por lotes de `blocks-per-tick` por tick para reducir el impacto en el TPS.
+The sum of the percentages of all assigned blocks cannot exceed 100%. The summary item (slot 4 of the composition editor) shows the total assigned and the remaining available percentage.
 
 ---
 
-**Los mensajes de reinicio aparecen a todos los jugadores del servidor. ¿Puedo limitarlo?**
+## Resets
 
-Sí. Edita la clave `broadcast-mode` en `config.yml`:
+**When does a mine reset automatically?**
+
+NXMines resets a mine when:
+1. Its timer reaches zero (according to the configured interval).
+2. The percentage of remaining blocks drops below `auto-reset-percentage` (if configured in `config.yml`).
+
+---
+
+**What reset strategy does NXMines use?**
+
+- If the region's volume is ≤ `instant-reset-threshold` (1000 blocks by default), `InstantResetStrategy` is used: all blocks are placed in a single tick.
+- If it is larger, `BatchResetStrategy` is used: blocks are placed in batches of `blocks-per-tick` per tick to reduce the impact on TPS.
+
+---
+
+**Reset messages appear to all players on the server. Can I limit that?**
+
+Yes. Edit the `broadcast-mode` key in `config.yml`:
 
 ```yaml
 mines:
-  broadcast-mode: MINE      # Solo jugadores dentro de la mina
-  # broadcast-mode: RADIUS  # Solo jugadores en un radio
-  # broadcast-mode: GLOBAL  # Todos (por defecto)
-  # broadcast-mode: NONE    # Nadie
-  broadcast-radius: 100     # Solo aplica si broadcast-mode es RADIUS
+  broadcast-mode: MINE      # Only players inside the mine
+  # broadcast-mode: RADIUS  # Only players within a radius
+  # broadcast-mode: GLOBAL  # Everyone (default)
+  # broadcast-mode: NONE    # Nobody
+  broadcast-radius: 100     # Only applies if broadcast-mode is RADIUS
 ```
 
 ---
 
 ## Drops
 
-**Los drops no llegan al inventario del jugador.**
+**Drops don't reach the player's inventory.**
 
-Comprueba que `drops.mode` en `config.yml` sea `INVENTORY`. Si tienes un plugin de auto-pickup (Drop2Inventory, AutoPickup, etc.), los drops siempre van al inventario independientemente del modo si `force-inventory-with-autopickup: true`.
-
----
-
-**¿Puedo hacer que un drop ejecute un comando al recogerlo?**
-
-Sí. En el editor de drops añade el comando con el prefijo `{console:<cmd>}` o `{player:<cmd>}`. El placeholder `%player%` se reemplaza por el nombre del jugador.
+Check that `drops.mode` in `config.yml` is `INVENTORY`. If you have an auto-pickup plugin (Drop2Inventory, AutoPickup, etc.), drops always go to the inventory regardless of the mode if `force-inventory-with-autopickup: true`.
 
 ---
 
-## Configuración
+**Can I make a drop run a command when it is picked up?**
 
-**Cambié `config.yml` pero los cambios no se aplican.**
-
-Ejecuta `/mine reload` para aplicar cambios en caliente. Para cambios de base de datos (tipo o credenciales), es necesario reiniciar el servidor completamente.
+Yes. In the drops editor add the command with the `{console:<cmd>}` or `{player:<cmd>}` prefix. The `%player%` placeholder is replaced with the player's name.
 
 ---
 
-**¿Puedo tener los mensajes en inglés?**
+## Configuration
 
-Sí. Cambia `messages: "es"` por `messages: "en"` en `config.yml` y ejecuta `/mine reload`.
+**I changed `config.yml` but the changes are not applied.**
+
+Run `/mine reload` to apply changes on the fly. For database changes (type or credentials), a full server restart is required.
+
+---
+
+**Can I have the messages in English?**
+
+Yes. Change `messages: "es"` to `messages: "en"` in `config.yml` and run `/mine reload`.
 
 ---
 
 ## PlaceholderAPI
 
-**Los placeholders `%nxmines_*%` muestran el texto sin resolver.**
+**The `%nxmines_*%` placeholders show unresolved text.**
 
-Asegúrate de que PlaceholderAPI esté instalado y cargado **antes** que NXMines. El comando `/mine version` muestra si el hook de PAPI fue detectado correctamente. Si no aparece, instala PAPI y reinicia el servidor.
+Make sure PlaceholderAPI is installed and loaded **before** NXMines. The `/mine version` command shows whether the PAPI hook was detected correctly. If it does not appear, install PAPI and restart the server.

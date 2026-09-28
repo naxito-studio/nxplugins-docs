@@ -1,92 +1,92 @@
-# Sistema de flags
+# Flag System
 
-NXGuard muestra y permite editar las flags de WorldGuard registradas en el servidor. Este documento explica cómo funcionan los tres estados, qué tipos de flags existen y cuáles son editables desde el GUI.
-
----
-
-## Los tres estados de una flag
-
-WorldGuard trabaja con flags que pueden tener o no un valor asignado. NXGuard los representa con tres estados visuales:
-
-### NONE — Neutral (tinte gris)
-
-La flag **no tiene ningún valor asignado** en esta región. WorldGuard aplicará su comportamiento predeterminado para esa flag, que puede ser heredado de una región padre o simplemente el valor por defecto del plugin.
-
-> Este es el estado inicial de todas las flags en una región recién creada.
-
-### ALLOW — Activada (tinte lima)
-
-La flag tiene asignado el valor `ALLOW` (para `StateFlag`) o `true` (para `BooleanFlag`). Indica que el comportamiento asociado está **explícitamente permitido** en la región.
-
-### DENY — Desactivada (tinte rojo)
-
-La flag tiene asignado el valor `DENY` (para `StateFlag`) o `false` (para `BooleanFlag`). Indica que el comportamiento asociado está **explícitamente denegado** en la región.
+NXGuard shows and lets you edit the WorldGuard flags registered on the server. This document explains how the three states work, which types of flags exist and which ones are editable from the GUI.
 
 ---
 
-## Tipos de flags en WorldGuard
+## The three states of a flag
 
-WorldGuard registra diferentes tipos de flags según el valor que almacenan:
+WorldGuard works with flags that may or may not have an assigned value. NXGuard represents them with three visual states:
 
-| Tipo | Descripción | Editable en GUI |
+### NONE — Neutral (gray tint)
+
+The flag has **no value assigned** in this region. WorldGuard will apply its default behavior for that flag, which may be inherited from a parent region or simply the plugin's default value.
+
+> This is the initial state of all flags in a newly created region.
+
+### ALLOW — Enabled (lime tint)
+
+The flag has the value `ALLOW` (for `StateFlag`) or `true` (for `BooleanFlag`). It indicates that the associated behavior is **explicitly allowed** in the region.
+
+### DENY — Disabled (red tint)
+
+The flag has the value `DENY` (for `StateFlag`) or `false` (for `BooleanFlag`). It indicates that the associated behavior is **explicitly denied** in the region.
+
+---
+
+## Flag types in WorldGuard
+
+WorldGuard registers different types of flags depending on the value they store:
+
+| Type | Description | Editable in GUI |
 |---|---|---|
-| `StateFlag` | Acepta `ALLOW`, `DENY` o sin valor. Es la más común. | ✅ Sí |
-| `BooleanFlag` | Acepta `true` o `false`. | ✅ Sí |
-| `StringFlag` | Almacena texto libre (ej: mensajes de entrada/salida). | ❌ No (requiere comando) |
-| `IntegerFlag` | Almacena un número entero (ej: cantidad de curación). | ❌ No (requiere comando) |
-| `DoubleFlag` | Almacena un número decimal. | ❌ No (requiere comando) |
-| `LocationFlag` | Almacena coordenadas. | ❌ No (requiere comando) |
-| `SetFlag` | Almacena un conjunto de valores. | ❌ No (requiere comando) |
+| `StateFlag` | Accepts `ALLOW`, `DENY` or no value. The most common one. | ✅ Yes |
+| `BooleanFlag` | Accepts `true` or `false`. | ✅ Yes |
+| `StringFlag` | Stores free text (e.g. entry/exit messages). | ❌ No (requires a command) |
+| `IntegerFlag` | Stores an integer number (e.g. healing amount). | ❌ No (requires a command) |
+| `DoubleFlag` | Stores a decimal number. | ❌ No (requires a command) |
+| `LocationFlag` | Stores coordinates. | ❌ No (requires a command) |
+| `SetFlag` | Stores a set of values. | ❌ No (requires a command) |
 
-Las flags `StringFlag`, `IntegerFlag`, etc. se muestran en el GUI con su estado actual (su valor se muestra como texto), pero los botones de click no están disponibles para ellas porque su lógica no es booleana. Para modificarlas usa el comando de WorldGuard:
+`StringFlag`, `IntegerFlag`, etc. are shown in the GUI with their current state (their value is shown as text), but the click buttons are not available for them because their logic is not boolean. To modify them use the WorldGuard command:
 
 ```
-/rg flag <región> <flag> <valor>
+/rg flag <region> <flag> <value>
 ```
 
 ---
 
-## Flags comunes de WorldGuard
+## Common WorldGuard flags
 
-Estas son algunas de las flags más usadas. Todas son `StateFlag` y por tanto editables desde el GUI:
+These are some of the most used flags. All of them are `StateFlag`s and therefore editable from the GUI, except where noted:
 
-| Flag | Descripción | Estado por defecto |
+| Flag | Description | Default state |
 |---|---|---|
-| `pvp` | Permite o deniega el combate entre jugadores. | DENY en `__global__` |
-| `mob-spawning` | Permite o deniega el spawn de mobs. | ALLOW |
-| `fire-spread` | Permite o deniega la propagación del fuego. | ALLOW |
-| `lava-fire` | Permite o deniega que la lava cause fuego. | ALLOW |
-| `block-break` | Permite o deniega romper bloques. | ALLOW para miembros |
-| `block-place` | Permite o deniega colocar bloques. | ALLOW para miembros |
-| `use` | Permite o deniega usar cofres, palancas, etc. | ALLOW para miembros |
-| `interact` | Permite o deniega interacción general. | ALLOW para miembros |
-| `chest-access` | Permite o deniega acceso a cofres específicamente. | ALLOW para miembros |
-| `creeper-explosion` | Permite o deniega explosiones de creepers. | ALLOW |
-| `tnt` | Permite o deniega explosiones de TNT. | ALLOW |
-| `vehicle-place` | Permite o deniega colocar vehículos (barcas, minecarts). | ALLOW |
-| `vehicle-destroy` | Permite o deniega destruir vehículos. | ALLOW |
-| `sleep` | Permite o deniega dormir en camas. | ALLOW |
-| `greeting` | Mensaje al entrar a la región (StringFlag). | Sin valor |
-| `farewell` | Mensaje al salir de la región (StringFlag). | Sin valor |
-| `heal-amount` | Cantidad de corazones que se regeneran (IntegerFlag). | Sin valor |
-| `feed-amount` | Cantidad de comida que se regenera (IntegerFlag). | Sin valor |
+| `pvp` | Allows or denies combat between players. | DENY in `__global__` |
+| `mob-spawning` | Allows or denies mob spawning. | ALLOW |
+| `fire-spread` | Allows or denies fire spread. | ALLOW |
+| `lava-fire` | Allows or denies lava causing fire. | ALLOW |
+| `block-break` | Allows or denies breaking blocks. | ALLOW for members |
+| `block-place` | Allows or denies placing blocks. | ALLOW for members |
+| `use` | Allows or denies using chests, levers, etc. | ALLOW for members |
+| `interact` | Allows or denies general interaction. | ALLOW for members |
+| `chest-access` | Allows or denies access to chests specifically. | ALLOW for members |
+| `creeper-explosion` | Allows or denies creeper explosions. | ALLOW |
+| `tnt` | Allows or denies TNT explosions. | ALLOW |
+| `vehicle-place` | Allows or denies placing vehicles (boats, minecarts). | ALLOW |
+| `vehicle-destroy` | Allows or denies destroying vehicles. | ALLOW |
+| `sleep` | Allows or denies sleeping in beds. | ALLOW |
+| `greeting` | Message when entering the region (StringFlag, not editable in GUI). | No value |
+| `farewell` | Message when leaving the region (StringFlag, not editable in GUI). | No value |
+| `heal-amount` | Amount of hearts regenerated (IntegerFlag, not editable in GUI). | No value |
+| `feed-amount` | Amount of food regenerated (IntegerFlag, not editable in GUI). | No value |
 
 ---
 
-## Cómo se guardan los cambios
+## How changes are saved
 
-Cada vez que se hace click en una flag editable desde el GUI, NXGuard:
+Every time you click an editable flag in the GUI, NXGuard:
 
-1. Aplica el nuevo valor a la región en memoria mediante la API de WorldGuard.
-2. Llama a `RegionManager.saveChanges()` para persistir los cambios en el archivo de regiones del mundo (normalmente `world/region/`).
-3. Actualiza el ítem en el inventario para reflejar el nuevo estado visualmente.
+1. Applies the new value to the region in memory through the WorldGuard API.
+2. Calls `RegionManager.saveChanges()` to persist the changes to the world's regions file (normally `world/region/`).
+3. Updates the item in the inventory to visually reflect the new state.
 
-Si `saveChanges()` lanza una excepción, se registra una advertencia en la consola y se notifica al jugador, pero el valor en memoria puede haberse aplicado igualmente.
+If `saveChanges()` throws an exception, a warning is logged in the console and the player is notified, but the in-memory value may have been applied anyway.
 
 ---
 
-## La región `__global__`
+## The `__global__` region
 
-WorldGuard tiene una región especial llamada `__global__` que aplica a todo el mundo. Sus flags afectan a todas las áreas que no estén cubiertas por otra región. NXGuard la muestra en el GUI como cualquier otra región y permite editar sus flags de la misma manera.
+WorldGuard has a special region called `__global__` that applies to the whole world. Its flags affect every area not covered by another region. NXGuard shows it in the GUI like any other region and lets you edit its flags the same way.
 
-> Cambiar flags en `__global__` tiene efecto en todo el mundo, no solo en una zona. Úsala con cuidado.
+> Changing flags in `__global__` affects the whole world, not just one area. Use it with care.

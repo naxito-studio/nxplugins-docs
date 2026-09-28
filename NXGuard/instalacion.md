@@ -1,35 +1,35 @@
-# Instalación
+# Installation
 
-## Requisitos previos
+## Prerequisites
 
-Antes de instalar NXGuard asegúrate de tener:
+Before installing NXGuard make sure you have:
 
-- Un servidor **Paper o Spigot 1.20** o superior.
-- **WorldEdit** instalado (viene incluido con WorldGuard o se instala por separado).
-- **WorldGuard** instalado y funcionando.
-- Java 17 o superior.
+- A **Paper or Spigot 1.20** (or higher) server.
+- **WorldEdit** installed (it ships with WorldGuard or is installed separately).
+- **WorldGuard** installed and working.
+- Java 17 or higher.
 
-> NXGuard no funcionará si WorldGuard no está presente. Al iniciar, si no lo detecta, se deshabilitará automáticamente y dejará un mensaje de error en la consola.
+> NXGuard will not work if WorldGuard is not present. On startup, if it can't find it, the plugin disables itself automatically and leaves an error message in the console.
 
 ---
 
-## Pasos de instalación
+## Installation steps
 
-### 1. Colocar el .jar en la carpeta plugins
+### 1. Put the .jar in the plugins folder
 
-Copia el archivo `NXGuard-<version>.jar` dentro de la carpeta `plugins/` de tu servidor.
+Copy the `NXGuard-<version>.jar` file into your server's `plugins/` folder.
 
 ```
-servidor/
+server/
 └── plugins/
     ├── WorldGuard.jar
     ├── WorldEdit.jar
-    └── NXGuard.jar        ← aquí
+    └── NXGuard.jar        ← here
 ```
 
-### 2. Iniciar o reiniciar el servidor
+### 2. Start or restart the server
 
-Arranca el servidor normalmente. NXGuard generará su archivo de configuración en:
+Start the server normally. NXGuard will generate its configuration file at:
 
 ```
 plugins/
@@ -37,42 +37,42 @@ plugins/
     └── config.yml
 ```
 
-### 3. Verificar la instalación
+### 3. Verify the installation
 
-Revisa la consola. Deberías ver líneas como estas:
-
-```
-[NXGuard] Motor de ediciones detectado: WorldEdit
-[NXGuard] WorldGuard Extra Flags no instalado (opcional).
-[NXGuard] NXGuard habilitado correctamente.
-```
-
-Si en cambio ves:
+Check the console. You should see lines like these:
 
 ```
-[NXGuard] WorldGuard no está instalado. NXGuard se deshabilitará.
+[NXGuard] Edit engine detected: WorldEdit
+[NXGuard] WorldGuard Extra Flags not installed (optional).
+[NXGuard] NXGuard enabled successfully.
 ```
 
-Significa que WorldGuard no está en la carpeta `plugins/` o no cargó correctamente.
+If you see this instead:
+
+```
+[NXGuard] WorldGuard is not installed. NXGuard will be disabled.
+```
+
+it means WorldGuard is not in the `plugins/` folder or did not load correctly.
 
 ---
 
-## Instalación opcional: WorldGuard Extra Flags
+## Optional installation: WorldGuard Extra Flags
 
-Si usas **WorldGuard Extra Flags**, colócalo también en `plugins/` antes de iniciar. NXGuard lo detecta automáticamente y mostrará en consola:
+If you use **WorldGuard Extra Flags**, place it in `plugins/` too before starting. NXGuard detects it automatically and prints in the console:
 
 ```
-[NXGuard] WorldGuard Extra Flags detectado — flags adicionales disponibles.
+[NXGuard] WorldGuard Extra Flags detected — additional flags available.
 ```
 
-Esto hace que todas las flags extra del plugin aparezcan en el GUI de NXGuard sin configuración adicional.
+This makes all the extra flags from that plugin appear in the NXGuard GUI with no additional configuration.
 
 ---
 
-## Actualizar NXGuard
+## Updating NXGuard
 
-1. Detén el servidor.
-2. Reemplaza el `.jar` antiguo por el nuevo en `plugins/`.
-3. Inicia el servidor.
+1. Stop the server.
+2. Replace the old `.jar` with the new one in `plugins/`.
+3. Start the server.
 
-> La carpeta `plugins/NXGuard/` y su `config.yml` se conservan entre actualizaciones. Revisa las notas de la versión por si hay nuevas claves en la configuración.
+> The `plugins/NXGuard/` folder and its `config.yml` are kept between updates. Check the release notes in case there are new keys in the configuration.

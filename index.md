@@ -3,20 +3,23 @@ layout: home
 
 hero:
   name: "Naxito's Studios"
-  text: "Documentación Oficial"
-  tagline: "Desarrollo de plugins para servidores Minecraft Paper 1.20+"
+  text: "Official Documentation"
+  tagline: "Minecraft Paper 1.20+ plugin development"
   image:
     src: /logo.png
     alt: Naxito's Studios
   actions:
     - theme: brand
-      text: Ver NXGuard
+      text: View NXGuard
       link: /NXGuard/README
     - theme: brand
-      text: Ver NXMines
+      text: View NXMines
       link: /NXMines/README
+    - theme: brand
+      text: View NXRooms
+      link: /NXRooms/README
     - theme: alt
-      text: Unirse al Discord
+      text: Join the Discord
       link: https://discord.gg/Xex24yPpWn
 
 features:
@@ -24,29 +27,37 @@ features:
       src: /nxguard.png
       alt: NXGuard
     title: NXGuard
-    details: Editor visual interactivo para regiones y flags de WorldGuard mediante menús de inventario (GUI).
+    details: Interactive visual editor for WorldGuard regions and flags through inventory menus (GUI).
     link: /NXGuard/README
-    linkText: Explorar guía
+    linkText: Explore the guide
 
   - icon:
       src: /nxmines.png
       alt: NXMines
     title: NXMines
-    details: Sistema de minas avanzadas con reinicio automático por tiempo o %, drops personalizados y soporte PAPI/Vault.
+    details: Advanced mines system with automatic reset by time or %, custom drops, and PAPI/Vault support.
     link: /NXMines/README
-    linkText: Explorar guía
+    linkText: Explore the guide
+
+  - icon:
+      src: /nxrooms.png
+      alt: NXRooms
+    title: NXRooms
+    details: Competitive PvP rooms plugin with a wand-based creation system for 1v1, 2v2 and 3v3 arenas.
+    link: /NXRooms/README
+    linkText: Explore the guide
 
   - icon:
       src: /logo.png
       alt: Naxito's Studios
-    title: Rendimiento & Calidad
-    details: Plugins compilados y probados para Paper 1.20+ con soporte multiidioma, SQLite/MySQL y alta personalización.
+    title: Performance & Quality
+    details: Compiled and tested plugins for Paper 1.20+ with multi-language support, SQLite/MySQL and high customization.
 
   - icon:
       src: /logo.png
-      alt: Soporte Oficial
-    title: Soporte Oficial
-    details: ¿Necesitas ayuda o encontraste algún error? Únete a nuestro Discord oficial para asistencia directa.
+      alt: Official Support
+    title: Official Support
+    details: Need help or found a bug? Join our official Discord for direct assistance.
     link: https://discord.gg/Xex24yPpWn
-    linkText: Ir al Discord
+    linkText: Go to Discord
 ---

@@ -1,76 +1,76 @@
 # PlaceholderAPI
 
-NXMines incluye una expansión de PlaceholderAPI que proporciona información en tiempo real sobre cada mina. Los placeholders funcionan en cualquier plugin compatible con PAPI: scoreboards, chat, hologramas, etc.
+NXMines includes a PlaceholderAPI expansion that provides real-time information about each mine. Placeholders work in any PAPI-compatible plugin: scoreboards, chat, holograms, etc.
 
 ---
 
-## Requisito
+## Requirement
 
-Debes tener **PlaceholderAPI** instalado en tu servidor. NXMines lo detecta automáticamente al iniciar. Si lo instalas después de que el servidor ya esté encendido, haz `/mine reload` o reinicia el servidor.
+You must have **PlaceholderAPI** installed on your server. NXMines detects it automatically on startup. If you install it after the server is already running, do `/mine reload` or restart the server.
 
 ---
 
-## Lista de placeholders
+## Placeholder list
 
-Todos los placeholders siguen el formato `%nxmines_<tipo>_<nombre_mina>%`, donde `<nombre_mina>` es el nombre interno de la mina en minúsculas.
+All placeholders follow the format `%nxmines_<type>_<mine_name>%`, where `<mine_name>` is the mine's internal name in lowercase.
 
-| Placeholder | Descripción | Caché |
+| Placeholder | Description | Cache |
 |---|---|---|
-| `%nxmines_prefix_<mina>%` | Prefijo de la mina (MiniMessage renderizado). | Estático |
-| `%nxmines_time_<mina>%` | Tiempo restante hasta el próximo reinicio (formato configurado en `config.yml`). | Dinámico |
-| `%nxmines_blocks_<mina>%` | Número de bloques restantes en la mina. | Dinámico |
-| `%nxmines_total_<mina>%` | Número total de bloques en la región de la mina. | Estático |
-| `%nxmines_percentage_<mina>%` | Porcentaje de bloques restantes (2 decimales). | Dinámico |
-| `%nxmines_world_<mina>%` | Nombre del mundo donde está la mina. | Estático |
-| `%nxmines_status_<mina>%` | Estado actual de la mina: `ACTIVE`, `RESETTING` o `DISABLED`. | Estático |
+| `%nxmines_prefix_<mine>%` | The mine's prefix (rendered MiniMessage). | Static |
+| `%nxmines_time_<mine>%` | Time remaining until the next reset (format configured in `config.yml`). | Dynamic |
+| `%nxmines_blocks_<mine>%` | Number of blocks remaining in the mine. | Dynamic |
+| `%nxmines_total_<mine>%` | Total number of blocks in the mine's region. | Static |
+| `%nxmines_percentage_<mine>%` | Percentage of remaining blocks (2 decimals). | Dynamic |
+| `%nxmines_world_<mine>%` | Name of the world where the mine is. | Static |
+| `%nxmines_status_<mine>%` | Current status of the mine: `ACTIVE`, `RESETTING` or `DISABLED`. | Static |
 
-> Los placeholders marcados como **Dinámico** se recalculan en cada petición. Los **Estáticos** se cachean y solo se invalidan cuando la mina cambia (nombre, región, prefijo, etc.) o cuando se ejecuta `/mine reload`.
-
----
-
-## Ejemplos de uso
-
-### Tiempo hasta el reinicio
-
-```
-Próximo reinicio: %nxmines_time_spawn_mine%
-```
-Resultado: `Próximo reinicio: 0h 4m 32s`
-
-### Porcentaje de bloques
-
-```
-Mina Spawn: %nxmines_percentage_spawn_mine%%
-```
-Resultado: `Mina Spawn: 67.43%`
-
-### Estado de la mina
-
-```
-Estado: %nxmines_status_spawn_mine%
-```
-Resultado: `Estado: ACTIVE`
+> Placeholders marked **Dynamic** are recalculated on every request. **Static** ones are cached and only invalidated when the mine changes (name, region, prefix, etc.) or when `/mine reload` is run.
 
 ---
 
-## Formato del tiempo
+## Usage examples
 
-El formato de `%nxmines_time_<mina>%` se configura en `config.yml`:
+### Time until reset
+
+```
+Next reset: %nxmines_time_spawn_mine%
+```
+Result: `Next reset: 0h 4m 32s`
+
+### Block percentage
+
+```
+Spawn Mine: %nxmines_percentage_spawn_mine%%
+```
+Result: `Spawn Mine: 67.43%`
+
+### Mine status
+
+```
+Status: %nxmines_status_spawn_mine%
+```
+Result: `Status: ACTIVE`
+
+---
+
+## Time format
+
+The format of `%nxmines_time_<mine>%` is configured in `config.yml`:
 
 ```yaml
 text:
   time-format: "{h}h {m}m {s}s"
 ```
 
-Tokens disponibles:
+Available tokens:
 
-| Token | Descripción |
+| Token | Description |
 |---|---|
-| `{h}` | Horas restantes |
-| `{m}` | Minutos restantes |
-| `{s}` | Segundos restantes |
+| `{h}` | Hours remaining |
+| `{m}` | Minutes remaining |
+| `{s}` | Seconds remaining |
 
-Si quieres solo minutos y segundos:
+If you only want minutes and seconds:
 ```yaml
 time-format: "{m}m {s}s"
 ```

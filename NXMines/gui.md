@@ -1,66 +1,66 @@
-# Uso del GUI
+# GUI Usage
 
-NXMines tiene varios menús de inventario interconectados. Todos se abren desde `/mine gui` o haciendo click en el menú anterior. Los inventarios no permiten mover ni sacar ítems; todos los clics están cancelados salvo las acciones definidas.
+NXMines has several interconnected inventory menus. They all open from `/mine gui` or by clicking in the previous menu. Inventories do not allow moving or taking items; all clicks are cancelled except the defined actions.
 
 ---
 
-## Menú principal — lista de minas
+## Main menu — mine list
 
-Se abre con `/mine gui`.
+Opens with `/mine gui`.
 
 ### Layout
 
 ```
 ┌─────────────────────────────────────────────┐
-│  M  M  M  M  M  M  M  M  M   ← fila 1      │
-│  M  M  M  M  M  M  M  M  M   ← fila 2      │
-│  M  M  M  M  M  M  M  M  M   ← fila 3      │
-│  M  M  M  M  M  M  M  M  M   ← fila 4      │
-│  M  M  M  M  M  M  M  M  M   ← fila 5      │
-│  ←  .  .  .  ✖  .  .  .  →   ← fila 6 nav │
+│  M  M  M  M  M  M  M  M  M   ← row 1       │
+│  M  M  M  M  M  M  M  M  M   ← row 2       │
+│  M  M  M  M  M  M  M  M  M   ← row 3       │
+│  M  M  M  M  M  M  M  M  M   ← row 4       │
+│  M  M  M  M  M  M  M  M  M   ← row 5       │
+│  ←  .  .  .  ✖  .  .  .  →   ← row 6 nav   │
 └─────────────────────────────────────────────┘
 
-M  = ítem de mina
-←  = página anterior (slot 45)
-→  = página siguiente (slot 53)
-✖  = cerrar (slot 49)
-.  = relleno (BLACK_STAINED_GLASS_PANE)
+M  = mine item
+←  = previous page (slot 45)
+→  = next page (slot 53)
+✖  = close (slot 49)
+.  = filler (BLACK_STAINED_GLASS_PANE)
 ```
 
-- Las filas 1–5 (slots 0–44) muestran hasta **45 minas** por página.
-- Si hay más minas que slots, aparece la flecha **→** en slot 53.
+- Rows 1–5 (slots 0–44) show up to **45 mines** per page.
+- If there are more mines than slots, the **→** arrow appears in slot 53.
 
-### Ítem de mina
+### Mine item
 
-Cada mina se representa con un ítem (material configurable, por defecto `STONE`) con:
+Each mine is represented by an item (configurable material, `STONE` by default) with:
 
-- **Nombre:** prefijo de color + nombre de la mina.
-- **Lore:** mundo, coordenadas de la región, bloques restantes, tiempo hasta el próximo reinicio.
+- **Name:** color prefix + the mine's name.
+- **Lore:** world, region coordinates, remaining blocks, time until the next reset.
 
-### Interacción
+### Interaction
 
-| Acción | Resultado |
+| Action | Result |
 |---|---|
-| Click izquierdo en una mina | Abre el editor de esa mina. |
-| Click derecho en una mina | Abre el menú de confirmación de eliminación. |
-| Click en `←` | Va a la página anterior. |
-| Click en `→` | Va a la página siguiente. |
-| Click en `✖` | Cierra el inventario. |
+| Left click on a mine | Opens that mine's editor. |
+| Right click on a mine | Opens the delete confirmation menu. |
+| Click on `←` | Goes to the previous page. |
+| Click on `→` | Goes to the next page. |
+| Click on `✖` | Closes the inventory. |
 
 ---
 
-## Editor de mina
+## Mine editor
 
-Se abre al hacer click izquierdo en una mina del menú principal.
+Opens when you left click a mine in the main menu.
 
-### Layout (4 filas — 36 slots)
+### Layout (4 rows — 36 slots)
 
 ```
 ┌─────────────────────────────────────────────┐
-│  .  .  .  .  .  .  .  .  .   ← fila 1      │
-│  .  DN P  RT BC D  I  RG .   ← fila 2      │
-│  .  .  .  .  .  .  .  .  .   ← fila 3      │
-│  .  .  .  .  ↩  .  .  .  .   ← fila 4 nav │
+│  .  .  .  .  .  .  .  .  .   ← row 1       │
+│  .  DN P  RT BC D  I  RG .   ← row 2       │
+│  .  .  .  .  .  .  .  .  .   ← row 3       │
+│  .  .  .  .  ↩  .  .  .  .   ← row 4 nav   │
 └─────────────────────────────────────────────┘
 
 DN = Display Name (slot 10)   — NAME_TAG
@@ -70,99 +70,99 @@ BC = Block Composition (slot 13) — GRASS_BLOCK
 D  = Custom Drops (slot 14)   — CHEST
 I  = GUI Icon Material (slot 15) — ITEM_FRAME
 RG = Redefine Region (slot 16) — FILLED_MAP
-↩  = Volver al listado (slot 31) — ARROW
+↩  = Back to list (slot 31) — ARROW
 
-Fila inferior:
+Bottom row:
 FR = Force Reset (slot 28)    — REDSTONE
 DU = Duplicate (slot 30)      — BOOK
 EX = Export (slot 32)         — ENDER_CHEST
 DE = Delete (slot 34)         — BARRIER
 ```
 
-### Botones del editor
+### Editor buttons
 
-| Botón | Slot | Acción |
+| Button | Slot | Action |
 |---|---|---|
-| **Display Name** | 10 | Pide por chat el nuevo nombre visible de la mina (acepta MiniMessage). |
-| **Mine Prefix** | 11 | Pide por chat el nuevo prefijo (acepta MiniMessage). |
-| **Reset Interval** | 12 | Abre el menú de intervalo de reinicio. |
-| **Block Composition** | 13 | Abre el editor de composición de bloques. |
-| **Custom Drops** | 14 | Abre el editor de tablas de drops. |
-| **GUI Icon Material** | 15 | Pide por chat el material del icono en el GUI. |
-| **Redefine Region** | 16 | Aplica tu selección activa de WorldEdit como nueva región. |
-| **Force Reset** | 28 | Fuerza el reinicio inmediato de la mina. |
-| **Duplicate** | 30 | Crea una copia de la mina con la misma composición y drops. |
-| **Export** | 32 | Guarda la configuración de la mina en un YAML externo. |
-| **Delete** | 34 | Abre el menú de confirmación para eliminar la mina. |
-| **‹ Back** | 31 | Vuelve al menú principal de minas. |
+| **Display Name** | 10 | Asks in chat for the mine's new visible name (accepts MiniMessage). |
+| **Mine Prefix** | 11 | Asks in chat for the new prefix (accepts MiniMessage). |
+| **Reset Interval** | 12 | Opens the reset interval menu. |
+| **Block Composition** | 13 | Opens the block composition editor. |
+| **Custom Drops** | 14 | Opens the drop tables editor. |
+| **GUI Icon Material** | 15 | Asks in chat for the icon material used in the GUI. |
+| **Redefine Region** | 16 | Applies your active WorldEdit selection as the new region. |
+| **Force Reset** | 28 | Forces an immediate reset of the mine. |
+| **Duplicate** | 30 | Creates a copy of the mine with the same composition and drops. |
+| **Export** | 32 | Saves the mine's configuration to an external YAML. |
+| **Delete** | 34 | Opens the confirmation menu to delete the mine. |
+| **‹ Back** | 31 | Returns to the main mines menu. |
 
 ---
 
-## Editor de composición de bloques
+## Block composition editor
 
-Se abre desde el botón **Block Composition** del editor.
+Opens from the **Block Composition** button in the editor.
 
-### Funcionamiento
+### How it works
 
-- Las filas 1–5 muestran los bloques ya asignados a la mina con su porcentaje.
-- Arrastra un bloque desde tu inventario a un slot vacío para añadirlo.
-- El ítem de resumen (slot 4) muestra el porcentaje total asignado y el restante disponible.
-- La composición total debe sumar exactamente **100%** para poder guardar.
+- Rows 1–5 show the blocks already assigned to the mine with their percentage.
+- Drag a block from your inventory to an empty slot to add it.
+- The summary item (slot 4) shows the total assigned percentage and the remaining available one.
+- The total composition must add up to exactly **100%** in order to save.
 
-### Interacción
+### Interaction
 
-| Acción | Resultado |
+| Action | Result |
 |---|---|
-| Arrastrar bloque a slot vacío | Añade el bloque a la composición. |
-| Click en un bloque existente | Abre el editor de porcentaje para ese bloque. |
-| Click derecho en un bloque | Elimina ese bloque de la composición. |
-| Click en `Save` (slot 49) | Guarda la composición si el total es 100%. |
-| Click en `Cancel` (slot 53) | Cancela sin guardar. |
+| Drag a block to an empty slot | Adds the block to the composition. |
+| Click on an existing block | Opens the percentage editor for that block. |
+| Right click on a block | Removes that block from the composition. |
+| Click on `Save` (slot 49) | Saves the composition if the total is 100%. |
+| Click on `Cancel` (slot 53) | Cancels without saving. |
 
 ---
 
-## Editor de intervalo de reinicio
+## Reset interval editor
 
-Se abre desde el botón **Reset Interval** del editor.
+Opens from the **Reset Interval** button in the editor.
 
-Muestra una fila de opciones de tiempo predefinidas. Haz click en el tiempo deseado para aplicarlo a la mina.
-
----
-
-## Editor de drops
-
-Se abre desde el botón **Custom Drops** del editor. Consulta la sección [Sistema de drops](drops.md) para detalles completos.
+It shows a row of predefined time options. Click the desired time to apply it to the mine.
 
 ---
 
-## Menú de confirmación — eliminar mina
+## Drops editor
 
-Se abre al hacer click derecho en una mina del menú principal, o desde el botón **Delete** del editor.
+Opens from the **Custom Drops** button in the editor. See the [Drop System](drops.md) section for full details.
 
-| Botón | Material | Acción |
+---
+
+## Confirmation menu — delete mine
+
+Opens when you right click a mine in the main menu, or from the **Delete** button in the editor.
+
+| Button | Material | Action |
 |---|---|---|
-| Confirm Delete | LIME_STAINED_GLASS_PANE | Elimina permanentemente la mina y todos sus datos. |
-| Cancel | RED_STAINED_GLASS_PANE | Cancela y regresa al menú anterior. |
+| Confirm Delete | LIME_STAINED_GLASS_PANE | Permanently deletes the mine and all its data. |
+| Cancel | RED_STAINED_GLASS_PANE | Cancels and returns to the previous menu. |
 
-> **Nota:** La eliminación de una mina es **permanente** e irreversible. Todos sus datos (composición, drops, región) se borran de la base de datos.
+> **Note:** Deleting a mine is **permanent** and irreversible. All its data (composition, drops, region) is erased from the database.
 
 ---
 
-## Navegación completa
+## Full navigation
 
 ```
 /mine gui
-    └─► Menú principal (lista de minas)
-            │  click izquierdo en mina
-            └─► Editor de mina
+    └─► Main menu (mine list)
+            │  left click on mine
+            └─► Mine editor
                     │  click Composition
-                    └─► Editor de composición
+                    └─► Composition editor
                     │  click Drops
-                    └─► Editor de drops
+                    └─► Drops editor
                     │  click Reset Interval
-                    └─► Selector de intervalo
+                    └─► Interval selector
                     │  click ‹ Back
-                    └─► Menú principal
-            │  click derecho en mina
-            └─► Confirmación de eliminación
+                    └─► Main menu
+            │  right click on mine
+            └─► Delete confirmation
 ```
